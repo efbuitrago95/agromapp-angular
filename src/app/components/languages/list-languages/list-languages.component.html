@@ -1,0 +1,84 @@
+<div class="header bg-gradient-primary">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-3 col-6 text-center">
+                    <div class="card pointer" (click)="openModalCreateLanguage()">
+                        <div class="card-body">
+                            <span class="text-success"><fa name="plus"></fa></span>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <span class="h6 text-muted mb-0">Agregar idioma</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid content-table">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Idiomas</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6" *ngFor="let language of languages">
+                            <div class="card card-stats mb-4 mb-xl-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <span class="h2 font-weight-bold mb-0">{{ language.name }}</span>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-muted text-sm pointer" (click)="openModalEditLanguage(language)">
+                                        <span class="mr-2"><fa name="edit"></fa></span>
+                                        <span class="text-nowrap">Editar</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<button type="hidden" class="d-none" data-toggle="modal" data-target="#modal" id="btnOpenModal"></button>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                <form ngNativeValidate (submit)="onSubmit()">
+                    <h6 class="heading-small text-muted mb-4">Información del idioma</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Nombre</label>
+                                    <input [(ngModel)]="language.id" name="id" type="hidden" class="d-none">
+                                    <input [(ngModel)]="language.name" name="name" type="text" id="input-username" class="form-control form-control-alternative">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn-cancel-agromapp mr-3" data-dismiss="modal" id="closeModal">Cancelar</button>
+                        <button *ngIf="!language.id" type="submit" class="btn-success-agromapp">Guardar</button>
+                        <button *ngIf="language.id" type="submit" class="btn-success-agromapp">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

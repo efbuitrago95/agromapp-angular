@@ -1,1 +1,369 @@
 /* You can add global styles to this file, and also import other style files */
+
+*:focus {
+    outline: none !important;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border: none !important;
+    outline: 0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15) !important;
+}
+
+.main-content {
+    position: relative;
+}
+
+.main-content .navbar-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: transparent;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.card-stats {
+    box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.card-stats .card-body {
+    padding: 1rem 1.5rem;
+}
+
+.card-stats .card-status-bullet {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+@media (min-width: 768px) {
+    .main-content .container-fluid {
+        padding-left: 39px !important;
+        padding-right: 39px !important;
+    }
+}
+
+.navbar-vertical.navbar-expand-xs.fixed-left+.main-content {
+    margin-left: 250px;
+}
+
+.navbar-vertical.navbar-expand-xs.fixed-right+.main-content {
+    margin-right: 250px;
+}
+
+@media (min-width: 576px) {
+    .navbar-vertical.navbar-expand-sm.fixed-left+.main-content {
+        margin-left: 250px;
+    }
+    .navbar-vertical.navbar-expand-sm.fixed-right+.main-content {
+        margin-right: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-vertical.navbar-expand-md.fixed-left+.main-content {
+        margin-left: 250px;
+    }
+    .navbar-vertical.navbar-expand-md.fixed-right+.main-content {
+        margin-right: 250px;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-vertical.navbar-expand-lg.fixed-left+.main-content {
+        margin-left: 250px;
+    }
+    .navbar-vertical.navbar-expand-lg.fixed-right+.main-content {
+        margin-right: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-vertical.navbar-expand-xl.fixed-left+.main-content {
+        margin-left: 250px;
+    }
+    .navbar-vertical.navbar-expand-xl.fixed-right+.main-content {
+        margin-right: 250px;
+    }
+}
+
+.navbar-search .input-group {
+    border-radius: 2rem;
+    border: 2px solid;
+    background-color: transparent;
+}
+
+.navbar-search .input-group .input-group-text {
+    background-color: transparent;
+    padding-left: 1rem;
+}
+
+.navbar-search .form-control {
+    width: 270px;
+    background-color: transparent;
+}
+
+.navbar-search-dark .input-group {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar-search-dark .input-group-text {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar-search-dark .form-control {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-search-dark .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar-search-dark .focused .input-group {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-search-light .input-group {
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-search-light .input-group-text {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-search-light .form-control {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-search-light .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-search-light .focused .input-group {
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+.input-group-alternative {
+    box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+    border: 0;
+    transition: box-shadow .15s ease;
+}
+
+.input-group-alternative .form-control,
+.input-group-alternative .input-group-text {
+    border: 0;
+    box-shadow: none;
+}
+
+.focused .input-group-alternative {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.input-group-prepend,
+.input-group-append {
+    display: flex;
+}
+
+.input-group-prepend .btn,
+.input-group-append .btn {
+    position: relative;
+    z-index: 2;
+}
+
+.input-group-prepend .btn+.btn,
+.input-group-prepend .btn+.input-group-text,
+.input-group-prepend .input-group-text+.input-group-text,
+.input-group-prepend .input-group-text+.btn,
+.input-group-append .btn+.btn,
+.input-group-append .btn+.input-group-text,
+.input-group-append .input-group-text+.input-group-text,
+.input-group-append .input-group-text+.btn {
+    margin-left: -1px;
+}
+
+.input-group-prepend {
+    margin-right: -1px;
+}
+
+.input-group-append {
+    margin-left: -1px;
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #adb5bd;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #cad1d7;
+    border-radius: 0.375rem;
+}
+
+.input-group-text input[type="radio"],
+.input-group-text input[type="checkbox"] {
+    margin-top: 0;
+}
+
+.input-group-lg>.form-control,
+.input-group-lg>.input-group-prepend>.input-group-text,
+.input-group-lg>.input-group-append>.input-group-text,
+.input-group-lg>.input-group-prepend>.btn,
+.input-group-lg>.input-group-append>.btn {
+    height: calc(3.625rem + 2px);
+    padding: 0.875rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.4375rem;
+}
+
+.input-group-sm>.form-control,
+.input-group-sm>.input-group-prepend>.input-group-text,
+.input-group-sm>.input-group-append>.input-group-text,
+.input-group-sm>.input-group-prepend>.btn,
+.input-group-sm>.input-group-append>.btn {
+    height: calc(1.8125rem + 2px);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.input-group>.input-group-prepend>.btn,
+.input-group>.input-group-prepend>.input-group-text,
+.input-group>.input-group-append:not(:last-child)>.btn,
+.input-group>.input-group-append:not(:last-child)>.input-group-text,
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.input-group>.input-group-append:last-child>.input-group-text:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group>.input-group-append>.btn,
+.input-group>.input-group-append>.input-group-text,
+.input-group>.input-group-prepend:not(:first-child)>.btn,
+.input-group>.input-group-prepend:not(:first-child)>.input-group-text,
+.input-group>.input-group-prepend:first-child>.btn:not(:first-child),
+.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.avatar {
+    color: #fff;
+    background-color: #adb5bd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+}
+
+.avatar img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.avatar+.avatar-content {
+    display: inline-block;
+    margin-left: .75rem;
+}
+
+.avatar-lg {
+    width: 58px;
+    height: 58px;
+    font-size: 0.875rem;
+}
+
+.avatar-sm {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+}
+
+.avatar-group .avatar {
+    position: relative;
+    z-index: 2;
+    border: 2px solid #fff;
+}
+
+.avatar-group .avatar:hover {
+    z-index: 3;
+}
+
+.avatar-group .avatar+.avatar {
+    margin-left: -1rem;
+}
+
+fa {
+    color: #fccc3c;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.form-control-alternative {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    border: 0 !important;
+    transition: box-shadow .15s ease;
+}
+
+.btn-success-agromapp {
+    background-color: #fccc3c;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-cancel-agromapp {
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.bg-gradient-primary {
+    background: #fccc3c !important;
+}
