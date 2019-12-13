@@ -1,0 +1,16 @@
+
+<pre>
+  {{ language | json}}
+</pre>
+
+<h1>Editar {{ language.name }}</h1>
+<h2>{{ language.id }}</h2>
+
+<form ngNativeValidate (submit)="onSubmit()">
+  <input [(ngModel)]="language.name" name="name" id="name"/>
+  <label for="name" data-error="wrong" data-success="right">Name</label>
+
+  <button type="button" class="btn btn-success">Loco</button>
+  <button type="submit" class="btn btn-success">Enviar</button>
+</form>
+

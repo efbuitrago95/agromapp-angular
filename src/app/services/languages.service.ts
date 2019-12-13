@@ -12,6 +12,10 @@ export class LanguagesService {
 
   constructor(private http: HttpClient) { }
 
+  getLanguageById(id: number) {
+    return this.http.get( this.apiUrl + 'languages/' + id);
+  }
+
   getLanguages() {
     return this.http.get(this.apiUrl + 'languages');
   }

@@ -32,6 +32,7 @@ import { AppGlobals } from './app-globals';
 import { ListLanguagesComponent } from './components/languages/list-languages/list-languages.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
+import { LanguagesEditorComponent } from './components/languages/languages-editor/languages-editor.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.
     ListLanguagesComponent,
     PropertiesComponent,
     DynamicTableComponent,
+    LanguagesEditorComponent,
   ],
   imports: [
     BrowserModule,
