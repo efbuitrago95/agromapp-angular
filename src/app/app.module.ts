@@ -33,6 +33,8 @@ import { ListLanguagesComponent } from './components/languages/list-languages/li
 import { PropertiesComponent } from './components/properties/properties.component';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
 import { LanguagesEditorComponent } from './components/languages/languages-editor/languages-editor.component';
+import { LanguagesCreateComponent } from './components/languages/languages-create/languages-create.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { LanguagesEditorComponent } from './components/languages/languages-edito
     PropertiesComponent,
     DynamicTableComponent,
     LanguagesEditorComponent,
+    LanguagesCreateComponent
   ],
   imports: [
     BrowserModule,

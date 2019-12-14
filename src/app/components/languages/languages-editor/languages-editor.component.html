@@ -1,16 +1,15 @@
-
-<pre>
-  {{ language | json}}
-</pre>
-
-<h1>Editar {{ language.name }}</h1>
-<h2>{{ language.id }}</h2>
-
-<form ngNativeValidate (submit)="onSubmit()">
-  <input [(ngModel)]="language.name" name="name" id="name"/>
-  <label for="name" data-error="wrong" data-success="right">Name</label>
-
-
-  <button type="submit" class="btn btn-success">Enviar</button>
-</form>
+<div class="container">
+  <h2>Editar: <small>lenguaje</small></h2>
+  <form class="ml-3">
+    <div class="row">
+      <div class="form-group col-sm-12 col-md-4 col-lg-4">
+        <label for="exampleInputEmail1">Nombre del lenguaje</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-outline-warning">Actualizar</button>
+      </div>
+    </div>
+  </form>
+</div>
 
