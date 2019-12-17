@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'properties', component: PropertiesComponent },
   {path: 'languages', component: ListLanguagesComponent },
   {path: 'table', component: TableComponent },
-  {path: 'languages/create', component: LanguagesCreateComponent },
+  {path: 'languages/creator', component: LanguagesCreateComponent },
   {path: 'languages/editor', component: LanguagesEditorComponent },
   {path: 'properties/create', component: PropertiesCreateComponent },
   {path: 'properties/editor', component: PropertiesEditorComponent }
