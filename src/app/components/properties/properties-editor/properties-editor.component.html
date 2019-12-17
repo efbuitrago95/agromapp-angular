@@ -1,28 +1,29 @@
-<div class="container">
-    <h2>Editar: <small>Propiedad</small></h2>
-    <form class="form-group ml-3">
-      <div class="row">
-        <div class="col-sm-12 col-md-5 col-lg-5">
-          <label for="exampleInputEmail1">Nombre de la propiedad</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre de la propiedad">
-        </div>
+<div class="container my-3">
+  <div class="col-md-7 m-auto">
+    <form role="form" class="form-width">
+      <h4 class="form-header text-center bg-warning">Editar propiedad</h4>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Información</h5>
+        <hr>
       </div>
       <div class="row">
-        <div class="col-sm-12 col-md-5 col-lg-5">
-          <div class="input-group mt-2">
-          <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+        <div class="form-group col-md-12">
+          <select class="custom-select" id="language_name">
+            <option selected>Elegir idioma</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
           </select>
-          </div>
         </div>
       </div>
-       <div class="row">
-        <div class="col-12 mt-3">
-          <button type="submit" class="btn btn-outline-warning">Editar Propiedad</button>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input type="text" class="form-control" placeholder="Nombre de la propiedad">
         </div>
-       </div> 
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-outline-warning col-md-4" type="submit">Actualizar</button>
+      </div>
     </form>
   </div>
+</div>

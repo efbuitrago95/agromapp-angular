@@ -22,6 +22,7 @@ import {
   SliderModule,
   TabViewModule
 } from 'primeng/primeng';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,9 +35,15 @@ import { PropertiesComponent } from './components/properties/properties-list/pro
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
 import { LanguagesEditorComponent } from './components/languages/languages-editor/languages-editor.component';
 import { LanguagesCreateComponent } from './components/languages/languages-create/languages-create.component';
-import { TableComponent } from './components/table/table.component';
 import { PropertiesCreateComponent } from './components/properties/properties-create/properties-create.component';
 import { PropertiesEditorComponent } from './components/properties/properties-editor/properties-editor.component';
+import { ListItemsComponent } from './components/items/list-items/list-items.component';
+import { ItemsCreateComponent } from './components/items/items-create/items-create.component';
+import { ItemsEditorComponent } from './components/items/items-editor/items-editor.component';
+import { from } from 'rxjs';
+
+
+
 
 
 @NgModule({
@@ -49,9 +56,12 @@ import { PropertiesEditorComponent } from './components/properties/properties-ed
     DynamicTableComponent,
     LanguagesEditorComponent,
     LanguagesCreateComponent,
-    TableComponent,
     PropertiesCreateComponent,
-    PropertiesEditorComponent
+    PropertiesEditorComponent,
+    ListItemsComponent,
+    ItemsCreateComponent,
+    ItemsEditorComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -75,7 +85,8 @@ import { PropertiesEditorComponent } from './components/properties/properties-ed
     OverlayPanelModule,
     PasswordModule,
     SliderModule,
-    TabViewModule
+    TabViewModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     AppGlobals,
