@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { Properties } from "../../models/properties";
-import { PropertiesService } from "../../services/properties.service";
-import { LanguagesService } from "../../services/languages.service";
-import { AppGlobals } from "../../app-globals";
+import { Properties } from "../../../models/properties";
+import { PropertiesService } from "../../../services/properties.service";
+import { LanguagesService } from "../../../services/languages.service";
+import { AppGlobals } from "../../../app-globals";
 import { Languages } from "src/app/models/languages";
 import {
   DynamicTableCol,
   DynamicTableType
-} from "../dynamic-table/dynamic-table.component";
+} from "../../dynamic-table/dynamic-table.component";
 
 @Component({
   selector: "app-properties",

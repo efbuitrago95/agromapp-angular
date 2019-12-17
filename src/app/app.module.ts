@@ -30,10 +30,13 @@ import { NavbarVerticalComponent } from './components/navbar-vertical/navbar-ver
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppGlobals } from './app-globals';
 import { ListLanguagesComponent } from './components/languages/list-languages/list-languages.component';
-import { PropertiesComponent } from './components/properties/properties.component';
+import { PropertiesComponent } from './components/properties/properties-list/properties.component';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
 import { LanguagesEditorComponent } from './components/languages/languages-editor/languages-editor.component';
 import { LanguagesCreateComponent } from './components/languages/languages-create/languages-create.component';
+import { TableComponent } from './components/table/table.component';
+import { PropertiesCreateComponent } from './components/properties/properties-create/properties-create.component';
+import { PropertiesEditorComponent } from './components/properties/properties-editor/properties-editor.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { LanguagesCreateComponent } from './components/languages/languages-creat
     PropertiesComponent,
     DynamicTableComponent,
     LanguagesEditorComponent,
-    LanguagesCreateComponent
+    LanguagesCreateComponent,
+    TableComponent,
+    PropertiesCreateComponent,
+    PropertiesEditorComponent
   ],
   imports: [
     BrowserModule,
