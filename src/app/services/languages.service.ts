@@ -16,7 +16,7 @@ export class LanguagesService {
     return this.http.get( this.apiUrl + 'languages/' + id);
   }
 
-  getLanguages() {
+  getLanguages(params: any[]) {
     return this.http.get(this.apiUrl + 'languages');
   }
 

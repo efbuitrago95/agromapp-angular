@@ -42,6 +42,7 @@ import { ItemsCreateComponent } from './components/items/items-create/items-crea
 import { ItemsEditorComponent } from './components/items/items-editor/items-editor.component';
 import { CountriesCreatorComponent } from './components/countries/countries-creator/countries-creator.component';
 import { CountriesEditorComponent } from './components/countries/countries-editor/countries-editor.component';
+import { PaginatorComponent } from './components/shared/paginator/paginator.component';
 
 
 
@@ -64,7 +65,8 @@ import { CountriesEditorComponent } from './components/countries/countries-edito
     ItemsCreateComponent,
     ItemsEditorComponent,
     CountriesCreatorComponent,
-    CountriesEditorComponent
+    CountriesEditorComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

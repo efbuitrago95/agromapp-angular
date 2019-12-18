@@ -11,60 +11,24 @@ import {LanguagesService} from '../../../services/languages.service';
 export class ListLanguagesComponent implements OnInit {
   language: Languages = new Languages();
   languages: Languages[] = [];
+  paginationData: any =  {};
+  params: any[];
 
   constructor(
-    private languagesServices: LanguagesService,
-    public appGlobals: AppGlobals
+    private languagesServices: LanguagesService
   ) {
   }
 
   ngOnInit() {
-    this.getLanguages();
+    this.params.push({ page: 1 });
+    this.getLanguages(this.params);
+    console.log(this.languages);
   }
 
-  onSubmit() {
-    if (this.language.id) {
-      this.languagesServices.updateLanguage(this.language).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getLanguages();
-          this.appGlobals.alertSuccess('Idioma actualizado con exito');
-          this.language = new Languages();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
-    } else {
-      this.languagesServices.createLanguage(this.language).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getLanguages();
-          this.appGlobals.alertSuccess('Idioma creado con exito');
-          this.language = new Languages();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
-    }
-  }
-
-  getLanguages() {
-    this.languagesServices.getLanguages().subscribe(res => {
-      Object.assign(this.languages, res);
+  getLanguages(params: any[]) {
+    this.languagesServices.getLanguages(params).subscribe((res: any) => {
+      Object.assign(this.languages, res.results);
+      Object.assign(this.paginationData, res.paginationData);
     });
-  }
-
-  openModalEditLanguage(language: Languages) {
-    this.language = language;
-    document.getElementById('btnOpenModal').click();
-  }
-
-  openModalCreateLanguage() {
-    this.language = new Languages();
-    document.getElementById('btnOpenModal').click();
   }
 }
