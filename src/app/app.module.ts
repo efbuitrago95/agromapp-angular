@@ -40,7 +40,9 @@ import { PropertiesEditorComponent } from './components/properties/properties-ed
 import { ListItemsComponent } from './components/items/list-items/list-items.component';
 import { ItemsCreateComponent } from './components/items/items-create/items-create.component';
 import { ItemsEditorComponent } from './components/items/items-editor/items-editor.component';
-import { from } from 'rxjs';
+import { CountriesCreatorComponent } from './components/countries/countries-creator/countries-creator.component';
+import { CountriesEditorComponent } from './components/countries/countries-editor/countries-editor.component';
+
 
 
 
@@ -60,7 +62,9 @@ import { from } from 'rxjs';
     PropertiesEditorComponent,
     ListItemsComponent,
     ItemsCreateComponent,
-    ItemsEditorComponent
+    ItemsEditorComponent,
+    CountriesCreatorComponent,
+    CountriesEditorComponent
     
   ],
   imports: [
