@@ -9,18 +9,25 @@ import {PropertiesEditorComponent} from './components/properties/properties-edit
 import {ListItemsComponent} from './components/items/list-items/list-items.component';
 import {ItemsCreateComponent} from './components/items/items-create/items-create.component';
 import {ItemsEditorComponent} from './components/items/items-editor/items-editor.component';
+import {ListCountriesComponent} from './components/countries/list-countries/list-countries.component';
+import {CountriesCreatorComponent} from './components/countries/countries-creator/countries-creator.component';
+import {CountriesEditorComponent} from './components/countries/countries-editor/countries-editor.component';
 
 
 const routes: Routes = [
   {path: 'languages', component: ListLanguagesComponent },
   {path: 'properties', component: PropertiesComponent },
   {path: 'items', component: ListItemsComponent },
+  {path: 'countries', component: ListCountriesComponent},
   {path: 'languages/creator', component: LanguagesCreateComponent },
   {path: 'languages/editor', component: LanguagesEditorComponent },
   {path: 'properties/creator', component: PropertiesCreateComponent },
   {path: 'properties/editor', component: PropertiesEditorComponent },
   {path: 'items/creator', component: ItemsCreateComponent },
-  {path: 'items/editor', component: ItemsEditorComponent }
+  {path: 'items/editor', component: ItemsEditorComponent },
+  {path: 'countries/creator', component: CountriesCreatorComponent },
+  {path: 'countries/editor', component: CountriesEditorComponent },
+  
 ];
 
 @NgModule({

@@ -30,16 +30,17 @@ import { SidebarModule } from 'ng-sidebar';
 import { NavbarVerticalComponent } from './components/navbar-vertical/navbar-vertical.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppGlobals } from './app-globals';
-import { ListLanguagesComponent } from './components/languages/list-languages/list-languages.component';
-import { PropertiesComponent } from './components/properties/properties-list/properties.component';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
+import { ListLanguagesComponent } from './components/languages/list-languages/list-languages.component';
 import { LanguagesEditorComponent } from './components/languages/languages-editor/languages-editor.component';
 import { LanguagesCreateComponent } from './components/languages/languages-create/languages-create.component';
+import { PropertiesComponent } from './components/properties/properties-list/properties.component';
 import { PropertiesCreateComponent } from './components/properties/properties-create/properties-create.component';
 import { PropertiesEditorComponent } from './components/properties/properties-editor/properties-editor.component';
 import { ListItemsComponent } from './components/items/list-items/list-items.component';
 import { ItemsCreateComponent } from './components/items/items-create/items-create.component';
 import { ItemsEditorComponent } from './components/items/items-editor/items-editor.component';
+import {ListCountriesComponent} from './components/countries/list-countries/list-countries.component';
 import { CountriesCreatorComponent } from './components/countries/countries-creator/countries-creator.component';
 import { CountriesEditorComponent } from './components/countries/countries-editor/countries-editor.component';
 
@@ -63,6 +64,7 @@ import { CountriesEditorComponent } from './components/countries/countries-edito
     ListItemsComponent,
     ItemsCreateComponent,
     ItemsEditorComponent,
+    ListCountriesComponent,
     CountriesCreatorComponent,
     CountriesEditorComponent
   ],
