@@ -20,14 +20,14 @@ const routes: Routes = [
   {path: 'items', component: ListItemsComponent },
   {path: 'countries', component: ListCountriesComponent},
   {path: 'languages/creator', component: LanguagesCreateComponent },
-  {path: 'languages/editor', component: LanguagesEditorComponent },
+  {path: 'languages/editor/:id', component: LanguagesEditorComponent },
   {path: 'properties/creator', component: PropertiesCreateComponent },
-  {path: 'properties/editor', component: PropertiesEditorComponent },
+  {path: 'properties/editor/:id', component: PropertiesEditorComponent },
   {path: 'items/creator', component: ItemsCreateComponent },
-  {path: 'items/editor', component: ItemsEditorComponent },
+  {path: 'items/editor/:id', component: ItemsEditorComponent },
   {path: 'countries/creator', component: CountriesCreatorComponent },
-  {path: 'countries/editor', component: CountriesEditorComponent },
-  
+  {path: 'countries/editor/:id', component: CountriesEditorComponent },
+  {path: 'items/editor/:id', component: ItemsEditorComponent }
 ];
 
 @NgModule({

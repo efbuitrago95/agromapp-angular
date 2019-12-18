@@ -11,9 +11,8 @@ import {LanguagesService} from '../../../services/languages.service';
 export class ListLanguagesComponent implements OnInit {
   language: Languages = new Languages();
   languages: Languages[] = [];
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  params: any = {};
+  paginationData: any = {};
 
   constructor(
     private languagesServices: LanguagesService,
@@ -22,85 +21,20 @@ export class ListLanguagesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.params.page = 1;
     this.getLanguages();
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
-  onSubmit() {
-    if (this.language.id) {
-      this.languagesServices.updateLanguage(this.language).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getLanguages();
-          this.appGlobals.alertSuccess('Idioma actualizado con exito');
-          this.language = new Languages();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
-    } else {
-      this.languagesServices.createLanguage(this.language).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getLanguages();
-          this.appGlobals.alertSuccess('Idioma creado con exito');
-          this.language = new Languages();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
-    }
+  procesaPropagar(mensaje) {
+    this.params.search = mensaje;
+    this.getLanguages();
   }
 
   getLanguages() {
-    this.languagesServices.getLanguages().subscribe(res => {
-      Object.assign(this.languages, res);
+    this.languagesServices.getLanguages(this.params).subscribe((res: any) => {
+      Object.assign(this.languages, res.results);
+      Object.assign(this.paginationData, res.paginationData);
     });
   }
 
-  openModalEditLanguage(language: Languages) {
-    this.language = language;
-    document.getElementById('btnOpenModal').click();
-  }
-
-  openModalCreateLanguage() {
-    this.language = new Languages();
-    document.getElementById('btnOpenModal').click();
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-
-  onSelectAll(items: any) {
-    console.log(items);
-  }
 }
-
-
-
-
-

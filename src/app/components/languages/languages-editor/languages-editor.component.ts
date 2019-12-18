@@ -10,8 +10,7 @@ import {Languages} from '../../../models/languages';
 export class LanguagesEditorComponent implements OnInit {
 
   language: Languages = new Languages();
-  id: number;
-  
+  id: number
   constructor( private languagesService: LanguagesService,
                private activatedRoute: ActivatedRoute) { }
 
@@ -27,8 +26,3 @@ export class LanguagesEditorComponent implements OnInit {
   }
 
 }
-
-
-
-
-
