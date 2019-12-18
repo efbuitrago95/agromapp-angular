@@ -6,16 +6,7 @@
 
     <form ngNativeValidate class="form group">
       <div class="row">
-        <div class="col-12">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Buscar por nombre...">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <ng-multiselect-dropdown
             name="test"
           [placeholder]="'custom placeholder'"
@@ -26,6 +17,15 @@
           (onSelectAll)="onSelectAll($event)"
           >
           </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar por nombre...">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </form>
