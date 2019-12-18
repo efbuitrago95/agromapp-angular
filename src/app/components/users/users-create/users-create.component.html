@@ -1,0 +1,82 @@
+<div class="container my-3">
+    <div class="col-md-7 m-auto">
+      <form role="form" class="form-width">
+        <h4 class="form-header text-center bg-warning">Crear Usuario</h4>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Información</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Primer nombre">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Apellido">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="number" class="form-control" placeholder="Número de documento">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="number" class="form-control" placeholder="Número de celular">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Dirección">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <ng-multiselect-dropdown
+              name="test"
+            [placeholder]="'Elija el pais'"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Permisos</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <ng-multiselect-dropdown
+              name="test"
+            [placeholder]="'Elija el idioma'"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="form-group col-md-6">
+            <ng-multiselect-dropdown
+              name="test"
+            [placeholder]="'Elija la categoria'"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
+        </div>
+      </form>
+    </div>
+</div>

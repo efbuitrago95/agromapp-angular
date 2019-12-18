@@ -1,10 +1,10 @@
 <div class="container my-4">
     <div class="titleTables">
-      <h2 class="d-flex m-0 align-items-center">Listado de paises</h2>
+      <h2 class="d-flex m-0 align-items-center">Listado de categorías</h2>
       <button [routerLink]="['creator']" class="btn bg-transparent d-flex align-items-center"><i class="fa fa-plus"></i></button>
     </div>
-
-    <form ngNativeValidate class="form group">
+  
+    <form class="form group">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
           <ng-multiselect-dropdown
@@ -33,14 +33,12 @@
       <div class="w-100 d-flex justify-content-start">
         <p class="text-muted"> 20 resultados</p>
       </div>
-
+  
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th scope="col">Id</th>
+          <th scope="col">id</th>
           <th scope="col">Nombre</th>
-          <th scope="col">Continente</th>
-          <th scope="col">Idioma</th>
           <th scope="col">Opciones</th>
         </tr>
         </thead>
@@ -48,8 +46,6 @@
         <tr>
           <th>1</th>
           <td>Mark</td>
-          <td>America</td>
-          <td>language</td>
           <td class="text-center">
             <button [routerLink]="['editor',id]" class="btn">
               <i class="fa fa-edit"></i>
@@ -59,8 +55,6 @@
         <tr>
           <th>1</th>
           <td>Mark</td>
-          <td>America</td>
-          <td>language</td>
           <td class="text-center">
             <button [routerLink]="['editor',id]" class="btn">
               <i class="fa fa-edit"></i>
@@ -70,7 +64,7 @@
         </tbody>
       </table>
     </div>
-
+  
     <div class="row d-flex justify-content-center">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a></li>

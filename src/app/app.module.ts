@@ -45,8 +45,15 @@ import { CountriesCreatorComponent } from './components/countries/countries-crea
 import { CountriesEditorComponent } from './components/countries/countries-editor/countries-editor.component';
 import { PaginatorComponent } from './components/shared/paginator/paginator.component';
 import { InputSearchComponent } from './components/shared/input-search/input-search.component';
-
-
+import { ListUsersComponent } from './components/users/list-users/list-users.component';
+import { UsersCreateComponent } from './components/users/users-create/users-create.component';
+import { UsersEditorComponent } from './components/users/users-editor/users-editor.component';
+import { ListCategoriesComponent } from './components/categories/list-categories/list-categories.component';
+import { CategoriesCreatorComponent } from './components/categories/categories-creator/categories-creator.component';
+import { CategoriesEditorComponent } from './components/categories/categories-editor/categories-editor.component';
+import { ListCropsComponent } from './components/crops/list-crops/list-crops.component';
+import { CropsCreatorComponent } from './components/crops/crops-creator/crops-creator.component';
+import { CropsEditorComponent } from './components/crops/crops-editor/crops-editor.component';
 
 
 
@@ -70,7 +77,16 @@ import { InputSearchComponent } from './components/shared/input-search/input-sea
     CountriesCreatorComponent,
     CountriesEditorComponent,
     PaginatorComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    ListUsersComponent,
+    UsersCreateComponent,
+    UsersEditorComponent,
+    ListCategoriesComponent,
+    CategoriesCreatorComponent,
+    CategoriesEditorComponent,
+    ListCropsComponent,
+    CropsCreatorComponent,
+    CropsEditorComponent
   ],
   imports: [
     BrowserModule,
