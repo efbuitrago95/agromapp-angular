@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Languages } from '../models/languages';
+import {AppGlobals} from '../app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,19 @@ export class LanguagesService {
 
   apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
   getLanguageById(id: number) {
     return this.http.get( this.apiUrl + 'languages/' + id);
   }
 
-  getLanguages(params: any[]) {
-    return this.http.get(this.apiUrl + 'languages');
+  getLanguages(params: any[] = null) {
+    let paramsUrl = '';
+    if (params !== null) {
+      paramsUrl = this.appGlobals.paramsConvert(params);
+    }
+
+    return this.http.get(this.apiUrl + 'languages' + paramsUrl);
   }
 
   createLanguage(language: Languages) {

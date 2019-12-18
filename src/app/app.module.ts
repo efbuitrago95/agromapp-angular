@@ -43,6 +43,7 @@ import { ItemsEditorComponent } from './components/items/items-editor/items-edit
 import { CountriesCreatorComponent } from './components/countries/countries-creator/countries-creator.component';
 import { CountriesEditorComponent } from './components/countries/countries-editor/countries-editor.component';
 import { PaginatorComponent } from './components/shared/paginator/paginator.component';
+import { InputSearchComponent } from './components/shared/input-search/input-search.component';
 
 
 
@@ -66,7 +67,8 @@ import { PaginatorComponent } from './components/shared/paginator/paginator.comp
     ItemsEditorComponent,
     CountriesCreatorComponent,
     CountriesEditorComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    InputSearchComponent
   ],
   imports: [
     BrowserModule,
