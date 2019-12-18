@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-list-items',
@@ -25,7 +24,7 @@ export class ListItemsComponent implements OnInit {
       { item_id: 3, item_text: 'Pune' },
       { item_id: 4, item_text: 'Navsari' }
     ];
-    this.dropdownSettings:IDropdownSettings = {
+    this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',

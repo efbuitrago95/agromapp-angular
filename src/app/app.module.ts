@@ -65,7 +65,6 @@ import { CountriesEditorComponent } from './components/countries/countries-edito
     ItemsEditorComponent,
     CountriesCreatorComponent,
     CountriesEditorComponent
-    
   ],
   imports: [
     BrowserModule,
