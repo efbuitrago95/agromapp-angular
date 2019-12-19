@@ -7,35 +7,33 @@
   <form class="form group">
     <div class="row">
       <div class="col-12">
-        <app-input-search (propagar)="procesaPropagar($event)"></app-input-search>
+        <app-input-search (onSearch)="changeSearch($event)"></app-input-search>
       </div>
     </div>
   </form>
-  <div class="col-12">
-    <div class="w-100 d-flex justify-content-start">
-      <p class="text-muted"> 20 resultados</p>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let language of languages" >
+          <th>{{language.id}}</th>
+          <td>{{language.name}}</td>
+          <td class="text-center">
+            <button [routerLink]="['editor', language.id]" class="btn">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-
-    <table class="table table-bordered table-striped">
-      <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Opciones</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let language of languages" >
-        <th>{{language.id}}</th>
-        <td>{{language.name}}</td>
-        <td class="text-center">
-          <button [routerLink]="['editor', language.id]" class="btn">
-            <i class="fa fa-edit"></i>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
   </div>
-  <app-paginator *ngIf="paginationData.totalItems" paginationData={{paginationData}}></app-paginator>
+  <app-paginator *ngIf="paginationData.totalItems"  (pageCalc)="changePage($event)" [paginationData]=paginationData></app-paginator>
 </div>

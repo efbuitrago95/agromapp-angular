@@ -25,13 +25,21 @@ export class ListLanguagesComponent implements OnInit {
     this.getLanguages();
   }
 
-  procesaPropagar(mensaje) {
+  changePage(page) {
+    this.params.page = page;
+    this.getLanguages();
+  }
+
+  changeSearch(mensaje) {
+    this.params.page = 1;
     this.params.search = mensaje;
     this.getLanguages();
   }
 
   getLanguages() {
     this.languagesServices.getLanguages(this.params).subscribe((res: any) => {
+      this.languages = [];
+      this.paginationData = {};
       Object.assign(this.languages, res.results);
       Object.assign(this.paginationData, res.paginationData);
     });
