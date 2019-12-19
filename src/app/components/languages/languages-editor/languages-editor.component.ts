@@ -19,13 +19,13 @@ export class LanguagesEditorComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
-    this.languagesServices.getLanguageById(this.id).subscribe((res: any) => {
+    this.languagesServices.getById(this.id).subscribe((res: any) => {
       Object.assign(this.language, res);
     });
   }
 
   onSubmit()  {
-    this.languagesServices.updateLanguage(this.language).subscribe(
+    this.languagesServices.update(this.language).subscribe(
       res => {
         this.appGlobals.alertSuccess('Idioma actualizado con exito');
         this.router.navigate(['/languages']);

@@ -3,22 +3,10 @@
       <h2 class="d-flex m-0 align-items-center">Listado de categorías</h2>
       <button [routerLink]="['creator']" class="btn bg-transparent d-flex align-items-center"><i class="fa fa-plus"></i></button>
     </div>
-  
+
     <form class="form group">
       <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-          <ng-multiselect-dropdown
-            name="test"
-          [placeholder]="'custom placeholder'"
-          [data]="dropdownList"
-          [(ngModel)]="selectedItems"
-          [settings]="dropdownSettings"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)"
-          >
-          </ng-multiselect-dropdown>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-12">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Buscar por nombre...">
             <div class="input-group-append">
@@ -33,7 +21,7 @@
       <div class="w-100 d-flex justify-content-start">
         <p class="text-muted"> 20 resultados</p>
       </div>
-  
+
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -64,7 +52,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="row d-flex justify-content-center">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a></li>
