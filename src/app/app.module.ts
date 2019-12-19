@@ -49,7 +49,7 @@ import { ListUsersComponent } from './components/users/list-users/list-users.com
 import { UsersCreateComponent } from './components/users/users-create/users-create.component';
 import { UsersEditorComponent } from './components/users/users-editor/users-editor.component';
 import { ListCategoriesComponent } from './components/categories/list-categories/list-categories.component';
-import { CategoriesCreatorComponent } from './components/categories/categories-creator/categories-creator.component';
+import { CategoriesCreateComponent } from './components/categories/categories-create/categories-create.component';
 import { CategoriesEditorComponent } from './components/categories/categories-editor/categories-editor.component';
 import { ListCropsComponent } from './components/crops/list-crops/list-crops.component';
 import { CropsCreatorComponent } from './components/crops/crops-creator/crops-creator.component';
@@ -82,7 +82,7 @@ import { CropsEditorComponent } from './components/crops/crops-editor/crops-edit
     UsersCreateComponent,
     UsersEditorComponent,
     ListCategoriesComponent,
-    CategoriesCreatorComponent,
+    CategoriesCreateComponent,
     CategoriesEditorComponent,
     ListCropsComponent,
     CropsCreatorComponent,

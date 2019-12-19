@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LanguagesService} from '../../../services/languages.service';
+import {AppGlobals} from '../../../app-globals';
+import {CategoriesService} from '../../../services/categories.service';
+import {Languages} from '../../../models/languages';
 
 @Component({
   selector: 'app-categories-editor',
@@ -6,38 +11,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-editor.component.css']
 })
 export class CategoriesEditorComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
 
-  constructor() { }
+  category: Languages = new Languages();
+  id: number
+  constructor( private activatedRoute: ActivatedRoute,
+               private categoriesService: CategoriesService,
+               public appGlobals: AppGlobals,
+               private router: Router) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.categoriesService.getById(this.id).subscribe((res: any) => {
+      Object.assign(this.category, res);
+    });
   }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  onSubmit()  {
+    this.categoriesService.update(this.category).subscribe(
+      res => {
+        this.appGlobals.alertSuccess('Categoría actualizada con exito');
+        this.router.navigate(['/categories']);
+      },
+      error => {
+        console.log(error.error);
+        this.appGlobals.alertError(error.error);
+      }
+    );
   }
 }

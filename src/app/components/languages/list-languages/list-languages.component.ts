@@ -9,7 +9,6 @@ import {LanguagesService} from '../../../services/languages.service';
   styleUrls: ['./list-languages.component.css']
 })
 export class ListLanguagesComponent implements OnInit {
-  language: Languages = new Languages();
   languages: Languages[] = [];
   params: any = {};
   paginationData: any = {};
