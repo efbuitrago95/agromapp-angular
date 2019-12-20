@@ -7,6 +7,11 @@
           <hr>
         </div>
         <div class="row">
+          <div class="from-group col-md-12">
+            <app-multi-selector></app-multi-selector>
+          </div>
+        </div>
+        <div class="row mt-2">
           <div class="form-group col-md-6">
             <input type="text" class="form-control" placeholder="Nombre científico">
           </div>
@@ -30,10 +35,39 @@
             <input type="text" class="form-control" placeholder="Familia Taxonomíca">
           </div>
         </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir imagen del cultivo</h5>
+          <hr>
+        </div>
         <div class="row">
           <div class="form-group col-md-12">
-            <input type="file" class="form-control-file" placeholder="Seleciona la imgen..." id="browse">
-            <label class="custom-file-label" for="">Seleccionar Archivo</label>
+              <ngx-file-picker
+                [adapter]="adapter"  
+                [enableCropper]="true"
+              >
+              </ngx-file-picker>
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir audio sobre el cultivo</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12 ">
+              <ngx-file-picker
+                [adapter]="adapter"  
+                [enableCropper]="true"
+              >
+              </ngx-file-picker>
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir el Link del video sobre el cultivo</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <input type="text" class="form-control" placeholder="link del cultivo">
           </div>
         </div>
         <div class="form-group text-center">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DemoFilePickerAdapter } from '../../../demo-file-picker.adapter';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crops-creator',
@@ -6,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crops-creator.component.css']
 })
 export class CropsCreatorComponent implements OnInit {
+  listelement = [{
+    id:1,
+    name:"prueba1"
+  }];
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-
-  constructor() { }
+  adapter = new DemoFilePickerAdapter(this.http);
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
     this.dropdownList = [

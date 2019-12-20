@@ -27,6 +27,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarModule } from 'ng-sidebar';
+import {FilePickerModule} from 'ngx-awesome-uploader';
+// components
 import { NavbarVerticalComponent } from './components/navbar-vertical/navbar-vertical.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppGlobals } from './app-globals';
@@ -54,6 +56,7 @@ import { CategoriesEditorComponent } from './components/categories/categories-ed
 import { ListCropsComponent } from './components/crops/list-crops/list-crops.component';
 import { CropsCreatorComponent } from './components/crops/crops-creator/crops-creator.component';
 import { CropsEditorComponent } from './components/crops/crops-editor/crops-editor.component';
+import { MultiSelectorComponent } from './components/shared/multi-selector/multi-selector.component';
 
 
 
@@ -86,7 +89,8 @@ import { CropsEditorComponent } from './components/crops/crops-editor/crops-edit
     CategoriesEditorComponent,
     ListCropsComponent,
     CropsCreatorComponent,
-    CropsEditorComponent
+    CropsEditorComponent,
+    MultiSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +98,7 @@ import { CropsEditorComponent } from './components/crops/crops-editor/crops-edit
     SidebarModule,
     AngularFontAwesomeModule,
     HttpClientModule,
+    FilePickerModule,
     FormsModule,
     BrowserAnimationsModule,
     TableModule,

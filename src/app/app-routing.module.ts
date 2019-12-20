@@ -21,6 +21,7 @@ import {CategoriesEditorComponent} from './components/categories/categories-edit
 import {ListCropsComponent} from './components/crops/list-crops/list-crops.component';
 import {CropsCreatorComponent} from './components/crops/crops-creator/crops-creator.component';
 import {CropsEditorComponent} from './components/crops/crops-editor/crops-editor.component';
+import {MultiSelectorComponent} from './components/shared/multi-selector/multi-selector.component'
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
   {path: 'categories/creator', component: CategoriesCreatorComponent },
   {path: 'categories/editor/:id', component: CategoriesEditorComponent },
   {path: 'crops/creator', component: CropsCreatorComponent },
-  {path: 'crops/editor/:id', component: CropsEditorComponent }
+  {path: 'crops/editor/:id', component: CropsEditorComponent },
+  {path: 'selector', component: MultiSelectorComponent }
 ];
 
 @NgModule({
