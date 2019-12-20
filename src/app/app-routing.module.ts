@@ -16,7 +16,7 @@ import {ListUsersComponent} from './components//users/list-users/list-users.comp
 import {UsersCreateComponent} from './components//users/users-create/users-create.component';
 import {UsersEditorComponent} from './components//users/users-editor/users-editor.component';
 import {ListCategoriesComponent} from './components/categories/list-categories/list-categories.component';
-import {CategoriesCreatorComponent} from './components/categories/categories-creator/categories-creator.component';
+import {CategoriesCreateComponent} from './components/categories/categories-create/categories-create.component';
 import {CategoriesEditorComponent} from './components/categories/categories-editor/categories-editor.component';
 import {ListCropsComponent} from './components/crops/list-crops/list-crops.component';
 import {CropsCreatorComponent} from './components/crops/crops-creator/crops-creator.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
   {path: 'items/editor/:id', component: ItemsEditorComponent },
   {path: 'users/creator', component: UsersCreateComponent },
   {path: 'users/editor/:id', component: UsersEditorComponent },
-  {path: 'categories/creator', component: CategoriesCreatorComponent },
+  {path: 'categories/creator', component: CategoriesCreateComponent },
   {path: 'categories/editor/:id', component: CategoriesEditorComponent },
   {path: 'crops/creator', component: CropsCreatorComponent },
   {path: 'crops/editor/:id', component: CropsEditorComponent },

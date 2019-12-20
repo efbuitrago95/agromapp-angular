@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoriesService} from '../../../services/categories.service';
+import {AppGlobals} from '../../../app-globals';
+import {Categories} from '../../../models/categories';
 
 @Component({
   selector: 'app-list-categories',
@@ -6,38 +9,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  categories: Categories[] = [];
+  params: any = {};
+  paginationData: any = {};
 
-  constructor() { }
+  constructor(
+    private categoriesService: CategoriesService,
+    public appGlobals: AppGlobals
+  ) {
+  }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.params.page = 1;
+    this.getCategories();
   }
-  onItemSelect(item: any) {
-    console.log(item);
+
+  changePage(page) {
+    this.params.page = page;
+    this.getCategories();
   }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  changeSearch(mensaje) {
+    this.params.page = 1;
+    this.params.search = mensaje;
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.categoriesService.get(this.params).subscribe((res: any) => {
+      this.categories = [];
+      this.paginationData = {};
+      Object.assign(this.categories, res.results);
+      Object.assign(this.paginationData, res.paginationData);
+    });
   }
 }

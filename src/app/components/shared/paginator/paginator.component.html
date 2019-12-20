@@ -1,7 +1,17 @@
-<div class="row d-flex justify-content-center">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a></li>
-    <li class="page-item"><a class="page-link">1 de 10</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a></li>
-  </ul>
+<div class="row">
+  <div class="col-12 d-flex justify-content-start">
+      <p class="text-muted"> {{paginationData.totalItems}} Resultados</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <ul class="pagination">
+      <li class="page-item"><a [ngClass]="{'disabled': !paginationData.previousPage}" class="page-link"
+                               (click)="onChange(-1)"><i class="fa fa-chevron-left"></i></a></li>
+      <li class="page-item"><a class="page-link">{{paginationData.currentPage}} de {{paginationData.totalPages}}</a>
+      </li>
+      <li class="page-item"><a [ngClass]="{'disabled': !paginationData.nextPage}" class="page-link"
+                               (click)="onChange(1)"><i class="fa fa-chevron-right"></i></a></li>
+    </ul>
+  </div>
 </div>

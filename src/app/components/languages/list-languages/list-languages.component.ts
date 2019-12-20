@@ -9,7 +9,6 @@ import {LanguagesService} from '../../../services/languages.service';
   styleUrls: ['./list-languages.component.css']
 })
 export class ListLanguagesComponent implements OnInit {
-  language: Languages = new Languages();
   languages: Languages[] = [];
   params: any = {};
   paginationData: any = {};
@@ -25,13 +24,21 @@ export class ListLanguagesComponent implements OnInit {
     this.getLanguages();
   }
 
-  procesaPropagar(mensaje) {
+  changePage(page) {
+    this.params.page = page;
+    this.getLanguages();
+  }
+
+  changeSearch(mensaje) {
+    this.params.page = 1;
     this.params.search = mensaje;
     this.getLanguages();
   }
 
   getLanguages() {
-    this.languagesServices.getLanguages(this.params).subscribe((res: any) => {
+    this.languagesServices.get(this.params).subscribe((res: any) => {
+      this.languages = [];
+      this.paginationData = {};
       Object.assign(this.languages, res.results);
       Object.assign(this.paginationData, res.paginationData);
     });

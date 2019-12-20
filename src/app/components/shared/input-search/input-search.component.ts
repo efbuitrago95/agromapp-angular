@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class InputSearchComponent implements OnInit {
 
-  @Output() propagar = new EventEmitter<string>();
+  @Output() onSearch = new EventEmitter<string>();
 
   textSearch = '';
   constructor() { }
@@ -15,7 +15,7 @@ export class InputSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  onPropagar() {
-    this.propagar.emit(this.textSearch);
+  onChangeSearch() {
+    this.onSearch.emit(this.textSearch);
   }
 }

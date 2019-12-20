@@ -43,7 +43,6 @@ export class AppGlobals {
     let query = '?';
     const paramsQuery =  Object.entries(params);
     for (const param of paramsQuery) {
-      console.log(param);
       query += `${param[0]}=${param[1]}&`;
     }
     query = query.slice(0, -1);
