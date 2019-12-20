@@ -38,30 +38,40 @@
         <thead>
         <tr>
           <th scope="col">id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Documento</th>
-          <th scope="col">Celular</th>
-          <th scope="col">Email</th>
-          <th scope="col">Dirección</th>
-          <th scope="col">Pais</th>
-          <th scope="col">Permisos-idioma</th>
-          <th scope="col">Permisos-categoria</th>
+          <th scope="col">Idioma</th>
+          <th scope="col">Nombre científico</th>
+          <th scope="col">Otro nombre científico</th>
+          <th scope="col">Nombre común</th>
+          <th scope="col">Otro nombre común</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Familia taxonomíca</th>
+          <th scope="col">Link del video</th>
+          <th scope="col">Imagen del cultivo</th>
+          <th scope="col">Audio informativo</th>
           <th scope="col">Opciones</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <th>1</th>
-          <td>Mark</td>
-          <td>lastname</td>
-          <td>document</td>
-          <td>phone</td>
-          <td>email</td>
-          <td>address</td>
-          <td>pais</td>
-          <td>idioma</td>
-          <td>categoria</td>
+          <td>language</td>
+          <td>name 1</td>
+          <td>name 2</td>
+          <td>common 1</td>
+          <td>common 2</td>
+          <td>authors</td>
+          <td>family</td>
+          <td><a href="#"></a>www.google.com</td>
+          <td class="text-center">
+            <button [routerLink]="" class="btn">
+              <i class="fa fa-image"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <button [routerLink]="" class="btn">
+              <i class="fa fa-play-circle"></i>
+            </button>
+          </td>
           <td class="text-center">
             <button [routerLink]="['editor',id]" class="btn">
               <i class="fa fa-edit"></i>
@@ -70,15 +80,24 @@
         </tr>
         <tr>
           <th>1</th>
-          <td>Mark</td>
-          <td>lastname</td>
-          <td>document</td>
-          <td>phone</td>
-          <td>email</td>
-          <td>address</td>
-          <td>pais</td>
-          <td>idioma</td>
-          <td>categoria</td>
+          <td>language</td>
+          <td>name 1</td>
+          <td>name 2</td>
+          <td>common 1</td>
+          <td>common 2</td>
+          <td>authors</td>
+          <td>family</td>
+          <td><a href="#"></a>www.google.com</td>
+          <td class="text-center">
+            <button [routerLink]="" class="btn">
+              <i class="fa fa-image"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <button [routerLink]="" class="btn">
+              <i class="fa fa-play-circle"></i>
+            </button>
+          </td>
           <td class="text-center">
             <button [routerLink]="['editor',id]" class="btn">
               <i class="fa fa-edit"></i>

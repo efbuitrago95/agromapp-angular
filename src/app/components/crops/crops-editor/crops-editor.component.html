@@ -1,1 +1,70 @@
-<p>crops-editor works!</p>
+<div class="container my-3">
+    <div class="col-md-7 m-auto">
+      <form role="form" class="form-width">
+        <h4 class="form-header text-center bg-warning">Editar cultivo</h4>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Información</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="from-group col-md-12">
+            <app-multi-selector></app-multi-selector>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Nombre científico">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Otro nombre científico">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Nombre común">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Otro nombre común">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Autores">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Familia Taxonomíca">
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir imagen del cultivo</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <app-upload-file></app-upload-file>
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir audio sobre el cultivo</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12 ">
+            <input type="file" accept="audio/*">
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <h5 class="text-dark">Subir el Link del video sobre el cultivo</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <input type="text" class="form-control" placeholder="link del cultivo">
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-outline-warning col-md-4" type="submit">Actualizar</button>
+        </div>
+      </form>
+    </div>
+</div>

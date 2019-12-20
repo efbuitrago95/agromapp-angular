@@ -27,7 +27,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarModule } from 'ng-sidebar';
-import {FilePickerModule} from 'ngx-awesome-uploader';
+import { ImageUploadModule } from 'angular2-image-upload';
 // components
 import { NavbarVerticalComponent } from './components/navbar-vertical/navbar-vertical.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -57,6 +57,8 @@ import { ListCropsComponent } from './components/crops/list-crops/list-crops.com
 import { CropsCreatorComponent } from './components/crops/crops-creator/crops-creator.component';
 import { CropsEditorComponent } from './components/crops/crops-editor/crops-editor.component';
 import { MultiSelectorComponent } from './components/shared/multi-selector/multi-selector.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { AccordeonComponent } from './components/accordeon/accordeon.component';
 
 
 
@@ -90,7 +92,9 @@ import { MultiSelectorComponent } from './components/shared/multi-selector/multi
     ListCropsComponent,
     CropsCreatorComponent,
     CropsEditorComponent,
-    MultiSelectorComponent
+    MultiSelectorComponent,
+    UploadFileComponent,
+    AccordeonComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +102,6 @@ import { MultiSelectorComponent } from './components/shared/multi-selector/multi
     SidebarModule,
     AngularFontAwesomeModule,
     HttpClientModule,
-    FilePickerModule,
     FormsModule,
     BrowserAnimationsModule,
     TableModule,
@@ -116,7 +119,8 @@ import { MultiSelectorComponent } from './components/shared/multi-selector/multi
     PasswordModule,
     SliderModule,
     TabViewModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    ImageUploadModule.forRoot()
   ],
   providers: [
     AppGlobals,
