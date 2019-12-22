@@ -13,6 +13,10 @@ export class PropertiesService {
 
   constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
+  getById(id: number) {
+    return this.http.get( this.apiUrl + 'properties/' + id);
+  }
+
   get(params: any[] = null) {
     let paramsUrl = '';
     if (params !== null) {
