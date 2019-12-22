@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
 @Component({
   selector: 'app-multi-selector',
   templateUrl: './multi-selector.component.html',
@@ -9,21 +9,34 @@ export class MultiSelectorComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  @Input() listItems;
+  @Input() placeholder;
+  @Output() changeLanguage = new EventEmitter();
 
-  @Input() listelement:any={};
-
-
-  constructor(private http:HttpClient) { }
+  constructor() {
+    console.log('constructor');
+  }
 
   ngOnInit() {
-    console.log(this.listelement);
-
-
+    console.log('init');
+    console.log(this.listItems);
+    for (const item of this.listItems) {
+      // console.log(item)
+      this.dropdownList.push(item);
+    }
+    this.dropdownSettings = {
+      singleSelection: true,
+      idField: 'id',
+      textField: 'name',
+      allowSearchFilter: true
+    };
   }
-  onItemSelect(item: any) {
-    console.log(item);
+
+  onItemSelect(event) {
+    this.changeLanguage.emit(this.selectedItems);
   }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  onFilterChange(event) {
+    this.changeLanguage.emit(this.selectedItems);
   }
 }

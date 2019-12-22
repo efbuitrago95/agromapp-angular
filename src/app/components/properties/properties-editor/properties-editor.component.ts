@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {PropertiesService} from '../../../services/properties.service';
+import {LanguagesService} from '../../../services/languages.service';
+import {Languages} from '../../../models/languages';
 
 @Component({
   selector: 'app-properties-editor',
@@ -6,39 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./properties-editor.component.css']
 })
 export class PropertiesEditorComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  languages: Languages[] = [];
 
-  constructor() { }
+  constructor(
+    private propertiesServices: PropertiesService,
+    private languagesServices: LanguagesService
+  ) {
+  }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.getLanguages();
   }
-  onItemSelect(item: any) {
-    console.log(item);
+
+  getLanguages() {
+    this.languagesServices.get().subscribe((res: any) => {
+      this.languages = [];
+      console.log(res.results);
+      Object.assign(this.languages, res.results);
+    });
   }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  changeLanguage(selectedItems) {
+    if (selectedItems[0]) {
+      let asf = selectedItems[0].id;
+    }
   }
 
 }

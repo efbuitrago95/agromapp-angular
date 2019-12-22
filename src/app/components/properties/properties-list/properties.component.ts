@@ -4,10 +4,6 @@ import {PropertiesService} from '../../../services/properties.service';
 import {LanguagesService} from '../../../services/languages.service';
 import {AppGlobals} from '../../../app-globals';
 import {Languages} from 'src/app/models/languages';
-import {
-  DynamicTableCol,
-  DynamicTableType
-} from '../../dynamic-table/dynamic-table.component';
 
 @Component({
   selector: 'app-properties',
@@ -18,107 +14,55 @@ export class PropertiesComponent implements OnInit {
   property: Properties = new Properties();
   properties: Properties[] = [];
   languages: Languages[] = [];
-  cols: DynamicTableCol[];
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
-
+  params: any = {};
+  paginationData: any = {};
 
   constructor(
     private propertiesServices: PropertiesService,
-    private languagesServices: LanguagesService,
-    public appGlobals: AppGlobals
+    private languagesServices: LanguagesService
   ) {
   }
 
   ngOnInit() {
-    console.log(this.property);
-    this.languagesServices.get().subscribe(res => {
-      Object.assign(this.languages, res);
-    });
+    this.getLanguages();
     this.getProperties();
-    this.dropdownList = [
-      {item_id: 1, item_text: 'Mumbai'},
-      {item_id: 2, item_text: 'Bangaluru'},
-      {item_id: 3, item_text: 'Pune'},
-      {item_id: 4, item_text: 'Navsari'},
-      {item_id: 5, item_text: 'New Delhi'}
-    ];
-    this.selectedItems = [
-      {item_id: 3, item_text: 'Pune'},
-      {item_id: 4, item_text: 'Navsari'}
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
+  getLanguages() {
+    this.languagesServices.get().subscribe((res: any) => {
+      this.languages = [];
+      console.log(res.results);
+      Object.assign(this.languages, res.results);
+    });
   }
 
-  onSelectAll(items: any) {
-    console.log(items);
+  changePage(page) {
+    this.params.page = page;
+    this.getProperties();
   }
 
-  onSubmit() {
-    if (this.property.id) {
-      this.propertiesServices.updateProperty(this.property).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getProperties();
-          this.appGlobals.alertSuccess('Propiedad actualizada con exito');
-          this.property = new Properties();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
+  changeSearch(mensaje) {
+    this.params.page = 1;
+    this.params.search = mensaje;
+    this.getProperties();
+  }
+
+  changeLanguage(selectedItems) {
+    this.params.page = 1;
+    if (selectedItems[0]) {
+      this.params.language = selectedItems[0].id;
     } else {
-      this.propertiesServices.createProperty(this.property).subscribe(
-        res => {
-          document.getElementById('closeModal').click();
-          this.getProperties();
-          this.appGlobals.alertSuccess('Propiedad creado con exito');
-          this.property = new Properties();
-        },
-        error => {
-          console.log(error.error);
-          this.appGlobals.alertError(error.error);
-        }
-      );
+      delete this.params.language;
     }
+    this.getProperties();
   }
 
   getProperties() {
-    this.propertiesServices.getProperties().subscribe(res => {
-      Object.assign(this.properties, res);
-      // console.log(this.properties);
-      const opt: any[] = [];
-      Array.prototype.push.apply(opt, this.languages);
-      this.cols = [
-        {field: 'name', header: 'Nombre', type: DynamicTableType.text},
-        {
-          field: 'languages',
-          header: 'Idioma',
-          type: DynamicTableType.select,
-          options: opt,
-          label: 'name',
-          required: true
-        }
-      ];
+    this.propertiesServices.get(this.params).subscribe((res: any) => {
+      this.properties = [];
+      this.paginationData = {};
+      Object.assign(this.properties, res.results);
+      Object.assign(this.paginationData, res.paginationData);
     });
-  }
-
-  openModalEditProperty(property: Properties) {
-    this.property = property;
-    document.getElementById('btnOpenModal').click();
   }
 }
