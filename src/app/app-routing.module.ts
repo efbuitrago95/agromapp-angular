@@ -22,7 +22,8 @@ import {ListCropsComponent} from './components/crops/list-crops/list-crops.compo
 import {CropsCreatorComponent} from './components/crops/crops-creator/crops-creator.component';
 import {CropsEditorComponent} from './components/crops/crops-editor/crops-editor.component';
 import {MultiSelectorComponent} from './components/shared/multi-selector/multi-selector.component'
-import {AccordeonComponent} from './components/accordeon/accordeon.component';
+import {PropertiesAccordionComponent} from './components/accordion/properties-accordion/properties-accordion.component';
+import {ItemsAccordionComponent} from './components/accordion/items-accordion/items-accordion.component';
 
 
 
@@ -52,7 +53,7 @@ const routes: Routes = [
   {path: 'crops/creator', component: CropsCreatorComponent },
   {path: 'crops/editor/:id', component: CropsEditorComponent },
   {path: 'selector', component: MultiSelectorComponent },
-  {path: 'accordeon', component: AccordeonComponent }
+  {path: 'properties-accodion', component: PropertiesAccordionComponent },
   
 ];
 

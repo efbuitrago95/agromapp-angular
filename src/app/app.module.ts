@@ -58,7 +58,11 @@ import { CropsCreatorComponent } from './components/crops/crops-creator/crops-cr
 import { CropsEditorComponent } from './components/crops/crops-editor/crops-editor.component';
 import { MultiSelectorComponent } from './components/shared/multi-selector/multi-selector.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { AccordeonComponent } from './components/accordeon/accordeon.component';
+import { PropertiesAccordionComponent } from './components/accordion/properties-accordion/properties-accordion.component';
+import { ItemsAccordionComponent } from './components/accordion/items-accordion/items-accordion.component';
+
+
+
 
 
 
@@ -94,7 +98,8 @@ import { AccordeonComponent } from './components/accordeon/accordeon.component';
     CropsEditorComponent,
     MultiSelectorComponent,
     UploadFileComponent,
-    AccordeonComponent
+    PropertiesAccordionComponent,
+    ItemsAccordionComponent
   ],
   imports: [
     BrowserModule,

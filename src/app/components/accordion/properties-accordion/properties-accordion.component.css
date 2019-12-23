@@ -1,0 +1,28 @@
+.form-header {
+    margin: 0 -30px;
+    margin-bottom: 30px !important;
+    padding: 15px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.24);
+    color: black !important;
+  }
+  
+.form-width {
+padding: 0px 30px 15px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+box-shadow: 0px 2px 1px #ddd;
+margin: 0 auto;
+background-color: #fff;
+border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.active-amber-textarea textarea.md-textarea {
+border-bottom: 1px solid #ffa000;
+box-shadow: 0 1px 0 0 #ffa000;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 20rem;
+  min-height: 5rem;
+}
