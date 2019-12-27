@@ -1,23 +1,48 @@
 <div class="accordion" id="accordionitem">
     <div class="card  ">
         <div class="card-header bg-warning text-center" id="headingOne" data-toggle="collapse" data-target="#collapseinformation" >
-        <h4>Items</h4>
+        <h4>Morfología</h4>
         </div>
         <div id="collapseinformation" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionitem">
             <div class="card-body border border-warning">
                 <form role="form" class="form-width">
-                    <div class="form-group text-left">
-                        <h5>Información</h5>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 form-group active-amber-textarea">
-                            <label for="propagation">Morfologia</label>
-                            <textarea id="propagation" class="md-textarea form-control" name="textarea-subitem"></textarea>
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12 form-group active-amber-textarea">
+                                <textarea  class="md-textarea form-control" name="textarea-subitem" placeholder="Descripción del item"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <button class="btn btn-outline-warning col-md-4" type="submit">Guardar</button>
+                        <div class="form-group text-left mt-3">
+                        <h5 class="text-dark">Subir audio sobre el cultivo</h5>
+                        <hr>
+                        </div>
+                          <div class="row">
+                            <div class="custom-file form-group col-md-12 w-50">
+                              <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                              <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            </div>
+                          </div>
+                          <div class="form-group text-left mt-3">
+                            <h5 class="text-dark">Subir el Link del video sobre el cultivo</h5>
+                            <hr>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-md-12">
+                              <input type="text" class="form-control" placeholder="link del cultivo">
+                            </div>
+                          </div>
+                          <div class="form-group text-left">
+                            <h5 class="text-dark">Subir imagen del cultivo</h5>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <app-upload-file></app-upload-file>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-warning col-md-4" type="submit">Guardar</button>
+                        </div>
                     </div>
                 </form>
             </div>

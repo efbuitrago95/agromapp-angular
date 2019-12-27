@@ -1,5 +1,9 @@
 nav{
-    background: #A8A461 !important; 
+    background: #676C6B !important; 
+}
+
+ul li a{
+    color: #F5F4B6 !important;
 }
 .navbar-vertical.navbar-expand-xs.fixed-left+.main-content {
     margin-left: 250px;
