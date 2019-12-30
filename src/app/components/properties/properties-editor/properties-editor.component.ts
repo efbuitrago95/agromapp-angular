@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PropertiesService} from '../../../services/properties.service';
 import {LanguagesService} from '../../../services/languages.service';
 import {Languages} from '../../../models/languages';
@@ -13,24 +13,30 @@ import {Properties} from '../../../models/properties';
 })
 export class PropertiesEditorComponent implements OnInit {
   languages: Languages[] = [];
-
+  selectLanguage = [];
   property: Properties = new Properties();
-  id: number
-  constructor( private activatedRoute: ActivatedRoute,
-               private languagesServices: LanguagesService,
-               private propertiesService: PropertiesService,
-               public appGlobals: AppGlobals,
-               private router: Router) { }
+  id: number;
 
-  ngOnInit() {
-    this.id = this.activatedRoute.snapshot.params.id;
-    this.propertiesService.getById(this.id).subscribe((res: any) => {
-      Object.assign(this.property, res);
-    });
-    this.getLanguages();
+  constructor(private activatedRoute: ActivatedRoute,
+              private languagesServices: LanguagesService,
+              private propertiesService: PropertiesService,
+              public appGlobals: AppGlobals,
+              private router: Router) {
   }
 
-  onSubmit()  {
+  ngOnInit() {
+
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.propertiesService.getById(this.id).subscribe((res: any) => {
+      this.property = new Properties();
+      this.selectLanguage  = [];
+      Object.assign(this.property, res);
+      this.selectLanguage.push(this.property.languages);
+      this.getLanguages();
+    });
+  }
+
+  onSubmit() {
     this.propertiesService.update(this.property).subscribe(
       res => {
         this.appGlobals.alertSuccess('propiedad actualizada con exito');
@@ -53,7 +59,7 @@ export class PropertiesEditorComponent implements OnInit {
 
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
-      let asf = selectedItems[0].id;
+      this.property.idLanguage = selectedItems[0].id;
     }
   }
 
