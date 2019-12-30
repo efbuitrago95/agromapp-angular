@@ -11,6 +11,8 @@ export class MultiSelectorComponent implements OnInit {
   dropdownSettings = {};
   @Input() listItems;
   @Input() placeholder;
+  @Input() single;
+  @Input() listItemsSelected;
   @Output() changeLanguage = new EventEmitter();
 
   constructor() {
@@ -18,14 +20,11 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('init');
-    console.log(this.listItems);
-    for (const item of this.listItems) {
-      // console.log(item)
-      this.dropdownList.push(item);
-    }
+    this.selectedItems = this.listItemsSelected;
+    this.dropdownList = this.listItems;
+    console.log(this.selectedItems);
     this.dropdownSettings = {
-      singleSelection: true,
+      singleSelection: this.single,
       idField: 'id',
       textField: 'name',
       allowSearchFilter: true
@@ -33,10 +32,6 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   onItemSelect(event) {
-    this.changeLanguage.emit(this.selectedItems);
-  }
-
-  onFilterChange(event) {
     this.changeLanguage.emit(this.selectedItems);
   }
 }

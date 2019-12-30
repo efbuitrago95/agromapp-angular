@@ -8,13 +8,19 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12">
-          <app-multi-selector (changeLanguage)="changeLanguage($event)" *ngIf="languages.length > 0" [listItems]="languages" [placeholder]="'Seleccionar idioma'"></app-multi-selector>
+          <app-multi-selector
+            (changeLanguage)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]="'true'"
+            [listItemsSelected]="selectLanguage">
+          </app-multi-selector>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <input [(ngModel)]="property.name" name="name" type="text" class="form-control" placeholder="Nombre de la propiedad" required>
-
         </div>
       </div>
       <div class="form-group text-center">
