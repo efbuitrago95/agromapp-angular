@@ -428,13 +428,20 @@ fa {
 }
 
 .customClass .img-ul-clear {
-    background-color: #B819BB !important;
+    background-color: #ffea00 !important;
+    color: #FFFFFF !important;
+    font-size: 0.6rem !important;
 }
+
+
 
 .customClass .img-ul-drag-box-msg {
     color: black !important;
 }
 
 .customClass .img-ul-container {
-    background-color: #FF6CAD !important;
+    background-color: #eaeae3 !important;
+    border-right: dashed #ffea00 1px;
+    border-left: dashed #ffea00 1px;
+    border-bottom: dashed #ffea00 1px;
 }
