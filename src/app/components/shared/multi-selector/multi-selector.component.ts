@@ -13,7 +13,7 @@ export class MultiSelectorComponent implements OnInit {
   @Input() placeholder;
   @Input() single;
   @Input() listItemsSelected;
-  @Output() changeLanguage = new EventEmitter();
+  @Output() changeSelect = new EventEmitter();
 
   constructor() {
     console.log('constructor');
@@ -32,6 +32,6 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   onItemSelect(event) {
-    this.changeLanguage.emit(this.selectedItems);
+    this.changeSelect.emit(this.selectedItems);
   }
 }

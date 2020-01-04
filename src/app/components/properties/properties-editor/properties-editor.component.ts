@@ -25,7 +25,6 @@ export class PropertiesEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.id = this.activatedRoute.snapshot.params.id;
     this.propertiesService.getById(this.id).subscribe((res: any) => {
       this.property = new Properties();
@@ -33,6 +32,7 @@ export class PropertiesEditorComponent implements OnInit {
       Object.assign(this.property, res);
       this.selectLanguage.push(this.property.languages);
       this.getLanguages();
+      console.log('Resultado: ', res);
     });
   }
 

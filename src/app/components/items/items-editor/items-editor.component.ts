@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {Properties} from '../../../models/properties';
+import {Propertiesitems} from '../../../models/propertiesitems';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PropertiesService} from '../../../services/properties.service';
+import {PropertiesitemsService} from '../../../services/propertiesitems.service';
+import {AppGlobals} from '../../../app-globals';
 
 @Component({
   selector: 'app-items-editor',
@@ -6,39 +12,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items-editor.component.css']
 })
 export class ItemsEditorComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  properties: Properties[] = [];
+  selectProperty = [];
+  propertyItems: Propertiesitems = new Propertiesitems();
+  id: number;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private propertiesItemsService: PropertiesitemsService,
+              private propertiesService: PropertiesService,
+              public appGlobals: AppGlobals,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
-  }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.propertiesItemsService.getById(this.id).subscribe((res: any) => {
+      this.propertyItems = new Propertiesitems();
+      this.selectProperty = [];
+      Object.assign(this.propertyItems, res);
+      this.selectProperty.push(this.propertyItems.properties);
+      this.getProperties();
+      console.log('respuesta ', res);
+    });
   }
 
+  onSubmit() {
+    this.propertiesItemsService.update(this.propertyItems).subscribe(
+      res => {
+        this.appGlobals.alertSuccess('Sub propiedad actualizada con exito');
+        this.router.navigate(['/items']);
+      },
+      error => {
+        console.log(error.error);
+        this.appGlobals.alertError(error.error);
+      }
+    );
+  }
+
+  getProperties() {
+    this.propertiesService.get().subscribe((res: any) => {
+      this.properties = [];
+      console.log(res.results);
+      Object.assign(this.properties, res.results);
+    });
+  }
+
+  changeProperty(selectedItems) {
+    if (selectedItems[0]) {
+      this.propertyItems.idProperty = selectedItems[0].id;
+    }
+  }
 }
+

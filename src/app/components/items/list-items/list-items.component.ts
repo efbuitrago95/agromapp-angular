@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Properties} from '../../../models/properties';
+import {PropertiesService} from '../../../services/properties.service';
+import {PropertiesitemsService} from '../../../services/propertiesitems.service';
+import {Propertiesitems} from 'src/app/models/propertiesitems';
+import {AppGlobals} from '../../../app-globals';
 
 @Component({
   selector: 'app-list-items',
@@ -6,39 +11,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-items.component.css']
 })
 export class ListItemsComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  propertyItems: Propertiesitems[] = [];
+  properties: Properties[] = [];
+  params: any = {};
+  paginationData: any = {};
 
-  constructor() { }
+  constructor(private propertiesitemsService: PropertiesitemsService,
+              private propertiesService: PropertiesService) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
-  }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
+    this.getProperty();
+    this.getPropertiesItems();
   }
 
+  getProperty() {
+    this.propertiesService.get().subscribe((res: any) => {
+      this.properties = [];
+      console.log(res.results);
+      Object.assign(this.properties, res.results);
+    });
+  }
+
+  changePage(page) {
+    this.params.page = page;
+    this.getPropertiesItems();
+  }
+
+  changeSearch(mensaje) {
+    this.params.page = 1;
+    this.params.search = mensaje;
+    this.getPropertiesItems();
+  }
+
+  changeProperty(selectedItems) {
+    this.params.page = 1;
+    if (selectedItems[0]) {
+      this.params.property = selectedItems[0].id;
+    } else {
+      delete this.params.property;
+    }
+    this.getPropertiesItems();
+  }
+
+  getPropertiesItems() {
+    this.propertiesitemsService.get(this.params).subscribe((res: any) => {
+      this.propertyItems = [];
+      this.paginationData = {};
+      Object.assign(this.propertyItems, res.results);
+      Object.assign(this.paginationData, res.paginationData);
+    });
+  }
 }
