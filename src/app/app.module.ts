@@ -60,6 +60,9 @@ import { MultiSelectorComponent } from './components/shared/multi-selector/multi
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { PropertiesAccordionComponent } from './components/accordion/properties-accordion/properties-accordion.component';
 import { ItemsAccordionComponent } from './components/accordion/items-accordion/items-accordion.component';
+import { RolesCreatorComponent } from './components/roles/roles-creator/roles-creator.component';
+import { RolesEditorComponent } from './components/roles/roles-editor/roles-editor.component';
+import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
 
 
 
@@ -99,7 +102,10 @@ import { ItemsAccordionComponent } from './components/accordion/items-accordion/
     MultiSelectorComponent,
     UploadFileComponent,
     PropertiesAccordionComponent,
-    ItemsAccordionComponent
+    ItemsAccordionComponent,
+    RolesCreatorComponent,
+    RolesEditorComponent,
+    ListRolesComponent
   ],
   imports: [
     BrowserModule,
