@@ -1,0 +1,19 @@
+<div class="container my-3">
+  <div class="col-md-7 m-auto">
+    <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
+      <h4 class="form-header text-center bg-warning">Editar roles</h4>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Información</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input [(ngModel)]="rol.name" name="name" type="text" class="form-control" placeholder="Nombre del rol">
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-outline-warning col-md-4" type="submit">Actualizar</button>
+      </div>
+    </form>
+  </div>
+</div>

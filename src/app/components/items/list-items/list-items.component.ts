@@ -20,6 +20,7 @@ export class ListItemsComponent implements OnInit {
               private propertiesService: PropertiesService) { }
 
   ngOnInit() {
+    this.params.page = 1;
     this.getProperty();
     this.getPropertiesItems();
   }

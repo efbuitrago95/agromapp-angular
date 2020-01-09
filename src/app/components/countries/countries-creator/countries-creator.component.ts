@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Languages} from '../../../models/languages';
+import {LanguagesService} from '../../../services/languages.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppGlobals} from '../../../app-globals';
+import {Countries} from '../../../models/countries';
 
 @Component({
   selector: 'app-countries-creator',
@@ -9,34 +14,34 @@ export class CountriesCreatorComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  languages: Languages[] = [];
+  selectLanguage = [];
+  Country: Countries = new Countries();
 
-  constructor() { }
+  constructor(private languagesServices: LanguagesService) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.getLanguages();
   }
+
+  changeLanguage(selectedItems) {
+    if (selectedItems[0]) {
+      this.Country.idLanguage = selectedItems[0].id;
+    }
+  }
+
+  getLanguages() {
+    this.languagesServices.get().subscribe((res: any) => {
+      this.languages = [];
+      console.log(res.results);
+      Object.assign(this.languages, res.results);
+    });
+  }
+
   onItemSelect(item: any) {
     console.log(item);
   }
+
   onSelectAll(items: any) {
     console.log(items);
   }

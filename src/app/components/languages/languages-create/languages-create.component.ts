@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./languages-create.component.css']
 })
 export class LanguagesCreateComponent implements OnInit {
-
   language: Languages = new Languages();
   constructor(
     private languagesServices: LanguagesService,

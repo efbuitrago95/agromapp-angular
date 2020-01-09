@@ -63,6 +63,15 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 import { PropertiesAccordionComponent } from './components/accordion/properties-accordion/properties-accordion.component';
 import { ItemsAccordionComponent } from './components/accordion/items-accordion/items-accordion.component';
 import { environment } from '../environments/environment';
+import { RolesCreatorComponent } from './components/roles/roles-creator/roles-creator.component';
+import { RolesEditorComponent } from './components/roles/roles-editor/roles-editor.component';
+import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -96,7 +105,10 @@ import { environment } from '../environments/environment';
     MultiSelectorComponent,
     UploadFileComponent,
     PropertiesAccordionComponent,
-    ItemsAccordionComponent
+    ItemsAccordionComponent,
+    RolesCreatorComponent,
+    RolesEditorComponent,
+    ListRolesComponent
   ],
   imports: [
     BrowserModule,

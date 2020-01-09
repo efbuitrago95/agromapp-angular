@@ -23,6 +23,9 @@ import {CropsCreatorComponent} from './components/crops/crops-creator/crops-crea
 import {CropsEditorComponent} from './components/crops/crops-editor/crops-editor.component';
 import {MultiSelectorComponent} from './components/shared/multi-selector/multi-selector.component'
 import {PropertiesAccordionComponent} from './components/accordion/properties-accordion/properties-accordion.component';
+import {ListRolesComponent} from './components/roles/list-roles/list-roles.component';
+import {RolesCreatorComponent} from './components/roles/roles-creator/roles-creator.component';
+import {RolesEditorComponent} from './components/roles/roles-editor/roles-editor.component';
 import {ItemsAccordionComponent} from './components/accordion/items-accordion/items-accordion.component';
 
 
@@ -35,7 +38,7 @@ const routes: Routes = [
   {path: 'countries', component: ListCountriesComponent},
   {path: 'categories', component: ListCategoriesComponent},
   {path: 'crops', component: ListCropsComponent},
-
+  {path: 'roles', component: ListRolesComponent },
   // creator and editor
   {path: 'languages/creator', component: LanguagesCreateComponent },
   {path: 'languages/editor/:id', component: LanguagesEditorComponent },
@@ -54,7 +57,8 @@ const routes: Routes = [
   {path: 'crops/editor/:id', component: CropsEditorComponent },
   {path: 'selector', component: MultiSelectorComponent },
   {path: 'properties-accodion', component: PropertiesAccordionComponent },
-  
+  {path: 'roles/creator', component: RolesCreatorComponent },
+  {path: 'roles/editor/:id', component: RolesEditorComponent },
 ];
 
 @NgModule({

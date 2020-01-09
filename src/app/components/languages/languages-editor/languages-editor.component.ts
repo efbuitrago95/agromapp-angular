@@ -9,7 +9,6 @@ import {AppGlobals} from '../../../app-globals';
   styleUrls: ['./languages-editor.component.css']
 })
 export class LanguagesEditorComponent implements OnInit {
-
   language: Languages = new Languages();
   id: number
   constructor( private activatedRoute: ActivatedRoute,
@@ -36,5 +35,4 @@ export class LanguagesEditorComponent implements OnInit {
       }
     );
   }
-
 }
