@@ -11,7 +11,7 @@ import {Countries} from '../../../models/countries';
   styleUrls: ['./countries-creator.component.css']
 })
 export class CountriesCreatorComponent implements OnInit {
-  dropdownList = [];
+  continents = ['América', 'Europa', 'Asia', 'África', 'Oceanía'];
   selectedItems = [];
   dropdownSettings = {};
   languages: Languages[] = [];
@@ -27,6 +27,12 @@ export class CountriesCreatorComponent implements OnInit {
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
       this.Country.idLanguage = selectedItems[0].id;
+    }
+  }
+
+  changeContinent(selectedItems) {
+    if (selectedItems[0]) {
+      this.continents = selectedItems[0];
     }
   }
 

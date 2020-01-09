@@ -63,6 +63,7 @@ import { ItemsAccordionComponent } from './components/accordion/items-accordion/
 import { RolesCreatorComponent } from './components/roles/roles-creator/roles-creator.component';
 import { RolesEditorComponent } from './components/roles/roles-editor/roles-editor.component';
 import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -105,7 +106,8 @@ import { ListRolesComponent } from './components/roles/list-roles/list-roles.com
     ItemsAccordionComponent,
     RolesCreatorComponent,
     RolesEditorComponent,
-    ListRolesComponent
+    ListRolesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

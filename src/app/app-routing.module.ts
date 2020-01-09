@@ -26,7 +26,7 @@ import {PropertiesAccordionComponent} from './components/accordion/properties-ac
 import {ListRolesComponent} from './components/roles/list-roles/list-roles.component';
 import {RolesCreatorComponent} from './components/roles/roles-creator/roles-creator.component';
 import {RolesEditorComponent} from './components/roles/roles-editor/roles-editor.component';
-import {ItemsAccordionComponent} from './components/accordion/items-accordion/items-accordion.component';
+import {LoginComponent} from './components/login/login.component';
 
 
 
@@ -39,6 +39,7 @@ const routes: Routes = [
   {path: 'categories', component: ListCategoriesComponent},
   {path: 'crops', component: ListCropsComponent},
   {path: 'roles', component: ListRolesComponent },
+  {path: 'login', component: LoginComponent },
   // creator and editor
   {path: 'languages/creator', component: LanguagesCreateComponent },
   {path: 'languages/editor/:id', component: LanguagesEditorComponent },
