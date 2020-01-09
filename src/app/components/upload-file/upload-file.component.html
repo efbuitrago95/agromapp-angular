@@ -1,9 +1,10 @@
 <image-upload
-    class="customClass"
-    [max]="1"
-    [extensions]="['jpeg','png']"
-    buttonCaption="Seleccione"
-    dropBoxMessage="Arrastra las imágenes aquí o"
-    clearButtonCaption="Limpiar">
+  class="customClass"
+  [max]="1"
+  [extensions]="['jpeg','png']"
+  buttonCaption="Seleccione"
+  (uploadFinished)="onUploadFinished($event)"
+  dropBoxMessage="Arrastra las imágenes aquí o"
+  clearButtonCaption="Limpiar">
 
-></image-upload>
+</image-upload>

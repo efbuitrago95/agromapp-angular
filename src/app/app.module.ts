@@ -22,6 +22,8 @@ import {
   SliderModule,
   TabViewModule
 } from 'primeng/primeng';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -60,12 +62,7 @@ import { MultiSelectorComponent } from './components/shared/multi-selector/multi
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { PropertiesAccordionComponent } from './components/accordion/properties-accordion/properties-accordion.component';
 import { ItemsAccordionComponent } from './components/accordion/items-accordion/items-accordion.component';
-
-
-
-
-
-
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -125,7 +122,9 @@ import { ItemsAccordionComponent } from './components/accordion/items-accordion/
     SliderModule,
     TabViewModule,
     NgMultiSelectDropDownModule.forRoot(),
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
     AppGlobals,
