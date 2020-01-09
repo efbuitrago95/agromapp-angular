@@ -14,7 +14,7 @@ export class RolesServices {
   constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
   getById(id: number) {
-    return this.http.get( this.apiUrl + 'languages/' + id);
+    return this.http.get( this.apiUrl + 'roles/' + id);
   }
 
   get(params: any[] = null) {
@@ -35,7 +35,7 @@ export class RolesServices {
   }
 
   update(roles: Roles) {
-    return this.http.put(this.apiUrl + 'languages', JSON.stringify(roles), {
+    return this.http.put(this.apiUrl + 'roles', JSON.stringify(roles), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
