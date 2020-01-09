@@ -24,6 +24,7 @@ export class PropertiesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.params.page = 1;
     this.getLanguages();
     this.getProperties();
   }
@@ -58,6 +59,7 @@ export class PropertiesComponent implements OnInit {
   }
 
   getProperties() {
+    console.log("los params", this.params)
     this.propertiesServices.get(this.params).subscribe((res: any) => {
       this.properties = [];
       this.paginationData = {};
