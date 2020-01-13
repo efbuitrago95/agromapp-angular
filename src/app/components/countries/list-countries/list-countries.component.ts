@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CountriesService } from '../../../services/countries.service';
+import { LanguagesService } from '../../../services/languages.service';
+import {Countries} from '../../../models/countries';
+import {AppGlobals} from '../../../app-globals';
+import {Languages} from '../../../models/languages';
 
 @Component({
   selector: 'app-list-countries',
@@ -6,38 +11,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-countries.component.css']
 })
 export class ListCountriesComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  countries: Countries[] = [];
+  params: any = {};
+  paginationData: any = {};
+  languages: Languages[] = [];
 
-  constructor() { }
+  constructor(
+    private languagesServices: LanguagesService,
+    private countriesService: CountriesService,
+    public appGlobals: AppGlobals
+  ) {
+  }
+
+  getLanguages() {
+    this.languagesServices.get().subscribe((res: any) => {
+      this.languages = [];
+      console.log(res.results);
+      Object.assign(this.languages, res.results);
+    });
+  }
+
+  changeLanguage(selectedItems) {
+    this.params.page = 1;
+    if (selectedItems[0]) {
+      this.params.language = selectedItems[0].id;
+    } else {
+      delete this.params.language;
+    }
+    this.getCountries();
+  }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.params.page = 1;
+    this.getCountries();
+    this.getLanguages();
   }
-  onItemSelect(item: any) {
-    console.log(item);
+  changePage(page) {
+    this.params.page = page;
+    this.getCountries();
   }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  changeSearch(mensaje) {
+    this.params.page = 1;
+    this.params.search = mensaje;
+    this.getCountries();
+  }
+
+  getCountries() {
+    this.countriesService.get(this.params).subscribe((res: any) => {
+      this.countries = [];
+      this.paginationData = {};
+      Object.assign(this.countries, res.results);
+      console.log(this.countries)
+      Object.assign(this.paginationData, res.paginationData);
+    });
   }
 }

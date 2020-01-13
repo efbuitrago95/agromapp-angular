@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import * as firebase from 'firebase/app';
 
@@ -9,6 +9,7 @@ import * as firebase from 'firebase/app';
 })
 export class UploadFileComponent implements OnInit {
 
+  @Output() changeImage  = new EventEmitter();
   constructor(private storage: AngularFireStorage) {
   }
 
@@ -16,25 +17,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   async onUploadFinished(file) {
-    console.log(file.src);
-    const id = Math.random().toString(36).substring(2);
-    try {
-      const ref = firebase.storage().ref(`flags/${id}`);
-      await new Promise((resolve, reject) => {
-        ref.putString(file.src, 'data_url').then(() => {
-          // ref.getDownloadURL().then((url) => {
-          //   console.log('image 1: ', url);
-          //   resolve('OK');
-          // }).catch((error) => {
-          //   console.log(error);
-          //   reject(error);
-          // });
-        });
-      });
-    } catch (e) {
-      console.log(e);
-    }
-
-    console.log(id);
+    // console.log(file.src);
+    this.changeImage.emit(file.src);
   }
 }
