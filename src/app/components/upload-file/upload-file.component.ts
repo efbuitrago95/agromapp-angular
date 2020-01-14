@@ -1,6 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AngularFireStorage} from '@angular/fire/storage';
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-upload-file',
@@ -10,7 +8,7 @@ import * as firebase from 'firebase/app';
 export class UploadFileComponent implements OnInit {
 
   @Output() changeImage  = new EventEmitter();
-  constructor(private storage: AngularFireStorage) {
+  constructor() {
   }
 
   ngOnInit() {
