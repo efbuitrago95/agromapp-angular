@@ -26,7 +26,6 @@ export class ListCountriesComponent implements OnInit {
   getLanguages() {
     this.languagesServices.get().subscribe((res: any) => {
       this.languages = [];
-      console.log(res.results);
       Object.assign(this.languages, res.results);
     });
   }
@@ -62,7 +61,6 @@ export class ListCountriesComponent implements OnInit {
       this.countries = [];
       this.paginationData = {};
       Object.assign(this.countries, res.results);
-      console.log(this.countries)
       Object.assign(this.paginationData, res.paginationData);
     });
   }

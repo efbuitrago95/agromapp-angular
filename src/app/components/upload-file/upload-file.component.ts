@@ -15,7 +15,6 @@ export class UploadFileComponent implements OnInit {
   }
 
   async onUploadFinished(file) {
-    // console.log(file.src);
     this.changeImage.emit(file.src);
   }
 }

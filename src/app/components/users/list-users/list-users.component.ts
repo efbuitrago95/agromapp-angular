@@ -11,7 +11,7 @@ export class ListUsersComponent implements OnInit {
   dropdownSettings = {};
 
   constructor(){}
-  
+
   ngOnInit() {
     this.dropdownList = [
       { item_id: 1, item_text: 'Mumbai' },
@@ -33,12 +33,6 @@ export class ListUsersComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-  }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
   }
 
 }

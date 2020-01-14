@@ -32,7 +32,6 @@ export class PropertiesEditorComponent implements OnInit {
       Object.assign(this.property, res);
       this.selectLanguage.push(this.property.languages);
       this.getLanguages();
-      console.log('Resultado: ', res);
     });
   }
 
@@ -43,7 +42,6 @@ export class PropertiesEditorComponent implements OnInit {
         this.router.navigate(['/properties']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );
@@ -52,7 +50,6 @@ export class PropertiesEditorComponent implements OnInit {
   getLanguages() {
     this.languagesServices.get().subscribe((res: any) => {
       this.languages = [];
-      console.log(res.results);
       Object.assign(this.languages, res.results);
     });
   }

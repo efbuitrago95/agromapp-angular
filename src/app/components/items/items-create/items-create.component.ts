@@ -36,7 +36,6 @@ export class ItemsCreateComponent implements OnInit {
         this.router.navigate(['/items']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );
@@ -51,17 +50,8 @@ export class ItemsCreateComponent implements OnInit {
   getProperties() {
     this.propertiesService.get().subscribe((res: any) => {
       this.properties = [];
-      console.log(res.results);
       Object.assign(this.properties, res.results);
     });
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-
-  onSelectAll(items: any) {
-    console.log(items);
   }
 
 }
