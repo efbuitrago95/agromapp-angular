@@ -30,7 +30,6 @@ export class LanguagesEditorComponent implements OnInit {
         this.router.navigate(['/languages']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );

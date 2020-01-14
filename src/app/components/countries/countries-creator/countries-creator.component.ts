@@ -57,17 +57,8 @@ export class CountriesCreatorComponent implements OnInit {
   getLanguages() {
     this.languagesServices.get().subscribe((res: any) => {
       this.languages = [];
-      console.log(res.results);
       Object.assign(this.languages, res.results);
     });
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-
-  onSelectAll(items: any) {
-    console.log(items);
   }
 
   async onSubmit() {
@@ -78,20 +69,17 @@ export class CountriesCreatorComponent implements OnInit {
         ref.putString(this.image, 'data_url').then(() => {
           ref.getDownloadURL().then((url) => {
             this.country.image = url;
-            console.log(this.country);
             this.countriesService.create(this.country).subscribe(
               res => {
                 this.appGlobals.alertSuccess('País creado con exito');
                 this.router.navigate(['/countries']);
               },
               error => {
-                console.log(error.error);
                 this.appGlobals.alertError(error.error);
               }
             );
             resolve('OK');
           }).catch((error) => {
-            console.log(error);
             reject(error);
           });
         });
@@ -99,7 +87,6 @@ export class CountriesCreatorComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
-    // console.log(this.country);
   }
 
 }

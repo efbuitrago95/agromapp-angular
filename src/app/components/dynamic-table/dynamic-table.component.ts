@@ -56,7 +56,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.data);
     if (changes['data'] || changes['cols']) {
       if (this.cols) {
         for (const col of this.cols) {
@@ -107,7 +106,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
   onFilterMultiselectChange($event, dt, col) {
-    console.log(dt.value);
     if ($event.value) {
       if ($event.value.length === 0) {
         dt.filteredValue = dt.value;

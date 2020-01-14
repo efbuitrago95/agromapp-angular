@@ -28,7 +28,6 @@ export class RolesCreatorComponent implements OnInit {
         this.router.navigate(['/roles']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );

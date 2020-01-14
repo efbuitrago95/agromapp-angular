@@ -32,7 +32,6 @@ export class PropertiesComponent implements OnInit {
   getLanguages() {
     this.languagesServices.get().subscribe((res: any) => {
       this.languages = [];
-      console.log(res.results);
       Object.assign(this.languages, res.results);
     });
   }

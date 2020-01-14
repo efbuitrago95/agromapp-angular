@@ -15,7 +15,6 @@ export class PaginatorComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.paginationData.currentPage;
-    console.log(this.page);
   }
 
   onChange(value) {

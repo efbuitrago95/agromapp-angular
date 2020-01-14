@@ -28,7 +28,6 @@ export class ListItemsComponent implements OnInit {
   getProperty() {
     this.propertiesService.get().subscribe((res: any) => {
       this.properties = [];
-      console.log(res.results);
       Object.assign(this.properties, res.results);
     });
   }

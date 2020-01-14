@@ -32,7 +32,6 @@ export class ItemsEditorComponent implements OnInit {
       Object.assign(this.propertyItems, res);
       this.selectProperty.push(this.propertyItems.properties);
       this.getProperties();
-      console.log('respuesta ', res);
     });
   }
 
@@ -43,7 +42,6 @@ export class ItemsEditorComponent implements OnInit {
         this.router.navigate(['/items']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );
@@ -52,7 +50,6 @@ export class ItemsEditorComponent implements OnInit {
   getProperties() {
     this.propertiesService.get().subscribe((res: any) => {
       this.properties = [];
-      console.log(res.results);
       Object.assign(this.properties, res.results);
     });
   }

@@ -16,13 +16,11 @@ export class MultiSelectorComponent implements OnInit {
   @Output() changeSelect = new EventEmitter();
 
   constructor() {
-    console.log('constructor');
   }
 
   ngOnInit() {
     this.selectedItems = this.listItemsSelected;
     this.dropdownList = this.listItems;
-    console.log(this.selectedItems);
     this.dropdownSettings = {
       singleSelection: this.single,
       idField: 'id',

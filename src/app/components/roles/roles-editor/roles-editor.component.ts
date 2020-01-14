@@ -21,7 +21,6 @@ export class RolesEditorComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params.id;
     this.rolesServices.getById(this.id).subscribe((res: any) => {
       Object.assign(this.rol, res);
-      console.log('resultado', this.rol);
     });
   }
 
@@ -32,7 +31,6 @@ export class RolesEditorComponent implements OnInit {
         this.router.navigate(['/roles']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );

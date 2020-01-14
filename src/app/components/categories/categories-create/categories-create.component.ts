@@ -30,7 +30,6 @@ export class CategoriesCreateComponent implements OnInit {
         this.router.navigate(['/categories']);
       },
       error => {
-        console.log(error.error);
         this.appGlobals.alertError(error.error);
       }
     );

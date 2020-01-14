@@ -41,7 +41,6 @@ export class ListLanguagesComponent implements OnInit {
       this.paginationData = {};
       Object.assign(this.languages, res.results);
       Object.assign(this.paginationData, res.paginationData);
-      console.log('resultado', this.languages);
     });
   }
 }

@@ -38,10 +38,4 @@ export class CropsEditorComponent implements OnInit {
       allowSearchFilter: true
     };
   }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
 }
