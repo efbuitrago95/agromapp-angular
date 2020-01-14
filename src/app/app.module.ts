@@ -67,12 +67,9 @@ import { RolesCreatorComponent } from './components/roles/roles-creator/roles-cr
 import { RolesEditorComponent } from './components/roles/roles-editor/roles-editor.component';
 import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
 import { LoginComponent } from './components/login/login.component';
+import * as firebase from 'firebase';
 
-
-
-
-
-
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
