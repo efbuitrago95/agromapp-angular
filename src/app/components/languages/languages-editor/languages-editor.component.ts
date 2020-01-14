@@ -26,7 +26,7 @@ export class LanguagesEditorComponent implements OnInit {
   onSubmit()  {
     this.languagesServices.update(this.language).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Idioma actualizado con exito');
+        this.appGlobals.alertSuccess('Idioma actualizado con éxito');
         this.router.navigate(['/languages']);
       },
       error => {

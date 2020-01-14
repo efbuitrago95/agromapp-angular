@@ -21,7 +21,6 @@ export class CountriesCreatorComponent implements OnInit {
     {id: 5, name: 'Oceanía'}
   ];
   selectedItems = [];
-  dropdownSettings = {};
   languages: Languages[] = [];
   selectLanguage = [];
   country: Countries = new Countries();
@@ -71,7 +70,7 @@ export class CountriesCreatorComponent implements OnInit {
             this.country.image = url;
             this.countriesService.create(this.country).subscribe(
               res => {
-                this.appGlobals.alertSuccess('País creado con exito');
+                this.appGlobals.alertSuccess('País creado con éxito');
                 this.router.navigate(['/countries']);
               },
               error => {

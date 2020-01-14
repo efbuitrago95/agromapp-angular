@@ -29,7 +29,7 @@ export class CategoriesEditorComponent implements OnInit {
   onSubmit()  {
     this.categoriesService.update(this.category).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Categoría actualizada con exito');
+        this.appGlobals.alertSuccess('Categoría actualizada con éxito');
         this.router.navigate(['/categories']);
       },
       error => {

@@ -59,7 +59,7 @@ export class CountriesEditorComponent implements OnInit {
   onSubmit()  {
     this.countriesService.update(this.country).subscribe(
       res => {
-        this.appGlobals.alertSuccess('País actualizado con exito');
+        this.appGlobals.alertSuccess('País actualizado con éxito');
         this.router.navigate(['/countries']);
       },
       error => {

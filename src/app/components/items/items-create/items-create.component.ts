@@ -32,7 +32,7 @@ export class ItemsCreateComponent implements OnInit {
   onSubmit() {
     this.propertiesitemsService.create(this.propertyitems).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Sub-propiedad creada con exito');
+        this.appGlobals.alertSuccess('Sub-propiedad creada con éxito');
         this.router.navigate(['/items']);
       },
       error => {

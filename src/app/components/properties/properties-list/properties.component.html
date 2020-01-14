@@ -7,9 +7,12 @@
   <form class="form group">
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6">
-        <app-multi-selector (changeSelect)="changeLanguage($event)" *ngIf="languages.length > 0"
-                            [listItems]="languages" [placeholder]="'Seleccionar idioma'"
-                            [single]="'true'">
+        <app-multi-selector
+          (changeSelect)="changeLanguage($event)"
+          *ngIf="languages.length > 0"
+          [listItems]="languages"
+          [placeholder]="'Seleccionar idioma'"
+          [single]="'true'">
         </app-multi-selector>
       </div>
       <div class="col-sm-12 col-md-6 col-lg-6">

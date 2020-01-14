@@ -24,7 +24,7 @@ export class LanguagesCreateComponent implements OnInit {
   onSubmit() {
     this.languagesServices.create(this.language).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Idioma creado con exito');
+        this.appGlobals.alertSuccess('Idioma creado con éxito');
         this.router.navigate(['/languages']);
       },
       error => {

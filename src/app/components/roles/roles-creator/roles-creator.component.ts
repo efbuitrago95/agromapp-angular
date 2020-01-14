@@ -24,7 +24,7 @@ export class RolesCreatorComponent implements OnInit {
   onSubmit() {
     this.rolesServices.create(this.roles).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Rol creado con exito');
+        this.appGlobals.alertSuccess('Rol creado con éxito');
         this.router.navigate(['/roles']);
       },
       error => {

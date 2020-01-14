@@ -7,25 +7,16 @@
     <form class="form group">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <ng-multiselect-dropdown
-            name="test"
-          [placeholder]="'custom placeholder'"
-          [data]="dropdownList"
-          [(ngModel)]="selectedItems"
-          [settings]="dropdownSettings"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)"
-          >
-          </ng-multiselect-dropdown>
+          <app-multi-selector
+            (changeSelect)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]="'true'">
+          </app-multi-selector>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Buscar por nombre...">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i>
-              </button>
-            </div>
-          </div>
+          <app-input-search (onSearch)="changeSearch($event)"></app-input-search>
         </div>
       </div>
     </form>
@@ -52,38 +43,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th>1</th>
-          <td>Mark</td>
-          <td>lastname</td>
-          <td>document</td>
-          <td>phone</td>
-          <td>email</td>
-          <td>address</td>
-          <td>pais</td>
-          <td>pais</td>
-          <td>idioma</td>
-          <td>categoria</td>
+        <tr *ngFor="let user of users">
+          <th>{{user.id}}</th>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.document}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.address}}</td>
+          <td>{{user.idCountry}}</td>
+          <td>{{user.profession}}</td>
+          <td>{{user.id}}</td>
+          <td>{{user.id}}</td>
           <td class="text-center">
-            <button [routerLink]="['editor',id]" class="btn">
-              <i class="fa fa-edit"></i>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>Mark</td>
-          <td>lastname</td>
-          <td>document</td>
-          <td>phone</td>
-          <td>email</td>
-          <td>address</td>
-          <td>pais</td>
-          <td>idioma</td>
-          <td>pais</td>
-          <td>categoria</td>
-          <td class="text-center">
-            <button [routerLink]="['editor',id]" class="btn">
+            <button [routerLink]="['editor',user.id]" class="btn">
               <i class="fa fa-edit"></i>
             </button>
           </td>
@@ -91,12 +64,9 @@
         </tbody>
       </table>
     </div>
-
-    <div class="row d-flex justify-content-center">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a></li>
-        <li class="page-item"><a class="page-link">1 de 50</a></li>
-        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a></li>
-      </ul>
-    </div>
+  <app-paginator
+    *ngIf="paginationData.totalItems"
+     (pageCalc)="changePage($event)"
+     [paginationData]=paginationData>
+  </app-paginator>
 </div>

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Crops} from '../../../models/crops';
+import {Languages} from '../../../models/languages';
+import {LanguagesService} from '../../../services/languages.service';
+import {CropsService} from '../../../services/crops.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppGlobals} from '../../../app-globals';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-crops-creator',
@@ -7,32 +14,88 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./crops-creator.component.css']
 })
 export class CropsCreatorComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  Classifications = [
+    {id: 1, name: 'Aromatica de flor y fruto'},
+    {id: 2, name: 'Aromaticas medicinales'},
+    {id: 3, name: 'Aromatica de hoja'},
+    {id: 4, name: 'Hortaliza de hoja'},
+    {id: 5, name: 'Hortaliza de flor y fruto'},
+    {id: 6, name: 'Hortalizas de bulbo'},
+    {id: 7, name: 'Frutales'},
+    {id: 8, name: 'Granos secos'},
+    {id: 9, name: 'Leguminosas'},
+    {id: 10, name: 'Ornamentales'},
+    {id: 11, name: 'Cereales'},
+    {id: 12, name: 'Gramineas'},
+    {id: 13, name: 'Forestales'},
+    {id: 14, name: 'Hongos'},
+    {id: 15, name: 'Algas'}
+  ];
+  selectedClassification = [];
+  languages: Languages[] = [];
+  selectLanguage = [];
+  crop: Crops = new Crops();
+  image = '';
 
-  constructor(private http:HttpClient) { }
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private languagesService: LanguagesService,
+              private cropsService: CropsService,
+              public appGlobals: AppGlobals,
+              private router: Router) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    this.getLanguages();
+  }
+
+  async onSubmit() {
+    const id = Math.random().toString(36).substring(2);
+    try {
+      const ref = firebase.storage().ref(`flags/${id}`);
+      await new Promise((resolve, reject) => {
+        ref.putString(this.image, 'data_url').then(() => {
+          ref.getDownloadURL().then((url) => {
+            this.crop.picture = url;
+            this.cropsService.create(this.crop).subscribe(
+              res => {
+                this.appGlobals.alertSuccess('País creado con éxito');
+                this.router.navigate(['/countries']);
+              },
+              error => {
+                this.appGlobals.alertError(error.error);
+              }
+            );
+            resolve('OK');
+          }).catch((error) => {
+            reject(error);
+          });
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  changeLanguage(selectedItems) {
+    if (selectedItems[0]) {
+      this.crop.idlanguage = selectedItems[0].id;
+    }
+  }
+
+  changeClassifications(selectedItems) {
+    if (selectedItems[0]) {
+      this.crop.classification = selectedItems[0].id;
+    }
+  }
+
+  changeImage(image) {
+    this.image = image;
+  }
+
+  getLanguages() {
+    this.languagesService.get().subscribe((res: any) => {
+      this.languages = [];
+      Object.assign(this.languages, res.results);
+    });
   }
 }

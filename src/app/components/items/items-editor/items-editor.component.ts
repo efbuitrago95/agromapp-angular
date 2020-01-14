@@ -38,7 +38,7 @@ export class ItemsEditorComponent implements OnInit {
   onSubmit() {
     this.propertiesItemsService.update(this.propertyItems).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Sub propiedad actualizada con exito');
+        this.appGlobals.alertSuccess('Sub propiedad actualizada con éxito');
         this.router.navigate(['/items']);
       },
       error => {

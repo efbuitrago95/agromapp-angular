@@ -1,6 +1,6 @@
 <div class="container my-3">
     <div class="col-md-7 m-auto">
-      <form role="form" class="form-width">
+      <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
         <h4 class="form-header text-center bg-warning">Crear Cultivo</h4>
         <div class="form-group text-left">
           <h5 class="text-dark">Información</h5>
@@ -8,31 +8,50 @@
         </div>
         <div class="row">
           <div class="from-group col-md-12">
-            <app-multi-selector></app-multi-selector>
+            <app-multi-selector
+              (changeSelect)="changeLanguage($event)"
+              *ngIf="languages.length > 0"
+              [listItems]="languages"
+              [placeholder]="'Seleccionar idioma'"
+              [single]="'true'"
+              [listItemsSelected]="selectLanguage">
+            </app-multi-selector>
           </div>
         </div>
         <div class="row mt-2">
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Nombre científico">
+            <input [(ngModel)]="crop.scientificName" name="scientificName" type="text" class="form-control" placeholder="Nombre científico">
           </div>
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Otro nombre científico">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Nombre común">
-          </div>
-          <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Otro nombre común">
+            <input [(ngModel)]="crop.otherScientificNames" name="otherScientificNames" type="text" class="form-control" placeholder="Otro nombre científico">
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Autores">
+            <input [(ngModel)]="crop.commonName" name="commonName" type="text" class="form-control" placeholder="Nombre común">
           </div>
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Familia Taxonomíca">
+            <input [(ngModel)]="crop.otherCommonNames" name="otherCommonNames" type="text" class="form-control" placeholder="Otro nombre común">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input [(ngModel)]="crop.authors" name="authors" type="text" class="form-control" placeholder="Autores">
+          </div>
+          <div class="form-group col-md-6">
+            <input [(ngModel)]="crop.taxonomicFamily" name="taxonomicFamily" type="text" class="form-control" placeholder="Familia Taxonomíca">
+          </div>
+        </div>
+        <div class="row">
+          <div class="from-group col-md-12 mb-3">
+            <app-multi-selector
+              (changeSelect)="changeClassifications($event)"
+              *ngIf="Classifications.length > 0"
+              [listItems]="Classifications"
+              [placeholder]="'Seleccionar la clasificación'"
+              [single]="'true'"
+              [listItemsSelected]="selectedClassification">
+            </app-multi-selector>
           </div>
         </div>
         <div class="form-group text-left">
@@ -41,7 +60,7 @@
         </div>
         <div class="row">
           <div class="form-group col-md-12">
-            <app-upload-file></app-upload-file>
+            <app-upload-file (changeImage)="changeImage($event)"></app-upload-file>
           </div>
         </div>
         <div class="form-group text-left">
@@ -50,7 +69,7 @@
         </div>
         <div class="row">
           <div class="form-group col-md-12 ">
-            <input type="file" accept="audio/*">
+            <input [(ngModel)]="crop.record" name="record" type="text" >
           </div>
         </div>
         <div class="form-group text-left">
@@ -59,7 +78,7 @@
         </div>
         <div class="row">
           <div class="form-group col-md-12">
-            <input type="text" class="form-control" placeholder="link del cultivo">
+            <input [(ngModel)]="crop.video" name="video" type="text" class="form-control" placeholder="link del cultivo">
           </div>
         </div>
         <div class="form-group text-center">

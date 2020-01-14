@@ -38,7 +38,7 @@ export class PropertiesEditorComponent implements OnInit {
   onSubmit() {
     this.propertiesService.update(this.property).subscribe(
       res => {
-        this.appGlobals.alertSuccess('propiedad actualizada con exito');
+        this.appGlobals.alertSuccess('propiedad actualizada con éxito');
         this.router.navigate(['/properties']);
       },
       error => {

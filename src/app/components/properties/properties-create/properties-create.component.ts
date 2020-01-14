@@ -31,7 +31,7 @@ export class PropertiesCreateComponent implements OnInit {
   onSubmit() {
     this.propertiesService.create(this.property).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Propiedad creada con exito');
+        this.appGlobals.alertSuccess('Propiedad creada con éxito');
         this.router.navigate(['/properties']);
       },
       error => {
