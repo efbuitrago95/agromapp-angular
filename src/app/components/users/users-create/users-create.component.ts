@@ -72,7 +72,7 @@ export class UsersCreateComponent implements OnInit {
 
   changeCountries(selectedItems) {
     if (selectedItems[0]) {
-      this.country.id = selectedItems[0].id;
+      this.user.idCountry = selectedItems[0].id;
     }
   }
 

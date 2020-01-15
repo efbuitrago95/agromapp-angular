@@ -9,6 +9,7 @@ import {CountriesService} from '../../../services/countries.service';
 import {CategoriesService} from '../../../services/categories.service';
 import {UsersService} from '../../../services/users.service';
 import {AppGlobals} from '../../../app-globals';
+import {Properties} from '../../../models/properties';
 
 @Component({
   selector: 'app-users-editor',
@@ -25,6 +26,7 @@ export class UsersEditorComponent implements OnInit {
   category: Categories = new Categories();
   country: Countries = new Countries();
   user: Users = new Users();
+  id: number;
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -37,15 +39,24 @@ export class UsersEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.usersService.getById(this.id).subscribe((res: any) => {
+      this.user = new Users();
+      this.selectLanguage  = [];
+      Object.assign(this.user, res);
+      this.selectCountry.push(this.user.countries);
+      this.getLanguages();
+    });
     this.getLanguages();
     this.getCountries();
     this.getCategories();
   }
 
   onSubmit() {
+    delete this.user.createdAt;
     this.usersService.update(this.user).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Usuario creado con éxito');
+        this.appGlobals.alertSuccess('Usuario actualizado con éxito');
         this.router.navigate(['/users']);
       },
       error => {
@@ -69,7 +80,7 @@ export class UsersEditorComponent implements OnInit {
 
   changeCountries(selectedItems) {
     if (selectedItems[0]) {
-      this.country.id = selectedItems[0].id;
+      this.user.idCountry = selectedItems[0].id;
     }
   }
 
