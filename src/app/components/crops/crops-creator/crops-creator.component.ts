@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Crops} from '../../../models/crops';
 import {Languages} from '../../../models/languages';
+import {Properties} from '../../../models/properties';
 import {LanguagesService} from '../../../services/languages.service';
+import {PropertiesService} from '../../../services/properties.service';
 import {CropsService} from '../../../services/crops.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppGlobals} from '../../../app-globals';
@@ -14,6 +16,10 @@ import * as firebase from 'firebase';
   styleUrls: ['./crops-creator.component.css']
 })
 export class CropsCreatorComponent implements OnInit {
+  params: any =  {};
+  properties: Properties[] = [];
+  selectProperty = [];
+  propertiesAccordion: Properties[] = [];
   Classifications = [
     {id: 1, name: 'Aromatica de flor y fruto'},
     {id: 2, name: 'Aromaticas medicinales'},
@@ -40,6 +46,7 @@ export class CropsCreatorComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private languagesService: LanguagesService,
+              private propertiesService: PropertiesService,
               private cropsService: CropsService,
               public appGlobals: AppGlobals,
               private router: Router) { }
@@ -49,6 +56,8 @@ export class CropsCreatorComponent implements OnInit {
   }
 
   async onSubmit() {
+    console.log('es este', this.crop.idlanguage);
+    return ;
     const id = Math.random().toString(36).substring(2);
     try {
       const ref = firebase.storage().ref(`flags/${id}`);
@@ -79,12 +88,24 @@ export class CropsCreatorComponent implements OnInit {
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
       this.crop.idlanguage = selectedItems[0].id;
+      this.params.language = this.crop.idlanguage;
+      this.propertiesService.get(this.params).subscribe((res: any) => {
+      this.properties = res.results;
+      console.log(this.properties);
+      });
     }
   }
 
   changeClassifications(selectedItems) {
     if (selectedItems[0]) {
-      this.crop.classification = selectedItems[0].id;
+      this.crop.classification = selectedItems;
+    }
+  }
+
+  changeProperties(selectedItems) {
+    if (selectedItems[0]) {
+      this.propertiesAccordion = selectedItems;
+      console.log('accordeon', this.propertiesAccordion);
     }
   }
 

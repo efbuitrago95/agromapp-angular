@@ -13,7 +13,7 @@
               *ngIf="languages.length > 0"
               [listItems]="languages"
               [placeholder]="'Seleccionar idioma'"
-              [single]="'true'"
+              [single]='false'
               [listItemsSelected]="selectLanguage">
             </app-multi-selector>
           </div>
@@ -49,7 +49,7 @@
               *ngIf="Classifications.length > 0"
               [listItems]="Classifications"
               [placeholder]="'Seleccionar la clasificación'"
-              [single]="'true'"
+              [single]= 'false'
               [listItemsSelected]="selectedClassification">
             </app-multi-selector>
           </div>
@@ -81,9 +81,23 @@
             <input [(ngModel)]="crop.video" name="video" type="text" class="form-control" placeholder="link del cultivo">
           </div>
         </div>
+        <div class="row">
+          <div class="from-group col-md-12">
+            <app-multi-selector
+              (changeSelect)="changeProperties($event)"
+              *ngIf="properties.length > 0"
+              [listItems]="properties"
+              [placeholder]="'Seleccionar propiedad'"
+              [single]='false'
+              [listItemsSelected]="selectProperty">
+            </app-multi-selector>
+          </div>
+        </div>
         <div class="form-group text-center">
           <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
         </div>
+
       </form>
+
     </div>
 </div>

@@ -3,20 +3,17 @@
       <h2 class="d-flex m-0 align-items-center">Listado de cultivos</h2>
       <button [routerLink]="['creator']" class="btn bg-transparent d-flex align-items-center"><i class="fa fa-plus"></i></button>
     </div>
-  
+
     <form class="form group">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <ng-multiselect-dropdown
-            name="test"
-          [placeholder]="'custom placeholder'"
-          [data]="dropdownList"
-          [(ngModel)]="selectedItems"
-          [settings]="dropdownSettings"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)"
-          >
-          </ng-multiselect-dropdown>
+          <app-multi-selector
+            (changeSelect)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]="'true'">
+          </app-multi-selector>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
           <div class="input-group mb-3">
@@ -33,7 +30,7 @@
       <div class="w-100 d-flex justify-content-start">
         <p class="text-muted"> 20 resultados</p>
       </div>
-  
+
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -52,16 +49,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th>1</th>
-          <td>language</td>
-          <td>name 1</td>
-          <td>name 2</td>
-          <td>common 1</td>
-          <td>common 2</td>
-          <td>authors</td>
-          <td>family</td>
-          <td><a href="#"></a>www.google.com</td>
+        <tr *ngFor="let crop of crops">
+          <th>{{crop.id}}</th>
+          <td>{{crop.scientificName}}</td>
+          <td>{{crop.otherScientificNames}}</td>
+          <td>{{crop.commonName}}</td>
+          <td>{{crop.otherCommonNames}}</td>
+          <td>{{crop.taxonomicFamily}}</td>
+          <td>{{crop.authors}}</td>
+          <td>{{crop.classification}}</td>
+          <td>{{crop.video}}</td>
           <td class="text-center">
             <button [routerLink]="" class="btn">
               <i class="fa fa-image"></i>
@@ -73,33 +70,7 @@
             </button>
           </td>
           <td class="text-center">
-            <button [routerLink]="['editor',id]" class="btn">
-              <i class="fa fa-edit"></i>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>language</td>
-          <td>name 1</td>
-          <td>name 2</td>
-          <td>common 1</td>
-          <td>common 2</td>
-          <td>authors</td>
-          <td>family</td>
-          <td><a href="#"></a>www.google.com</td>
-          <td class="text-center">
-            <button [routerLink]="" class="btn">
-              <i class="fa fa-image"></i>
-            </button>
-          </td>
-          <td class="text-center">
-            <button [routerLink]="" class="btn">
-              <i class="fa fa-play-circle"></i>
-            </button>
-          </td>
-          <td class="text-center">
-            <button [routerLink]="['editor',id]" class="btn">
+            <button [routerLink]="['editor', crop.id]" class="btn">
               <i class="fa fa-edit"></i>
             </button>
           </td>
@@ -107,11 +78,9 @@
         </tbody>
       </table>
     </div>
-    <div class="row d-flex justify-content-center">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a></li>
-        <li class="page-item"><a class="page-link">1 de 50</a></li>
-        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a></li>
-      </ul>
-    </div>
+  <app-paginator
+    *ngIf="paginationData.totalItems"
+    (pageCalc)="changePage($event)"
+    [paginationData]=paginationData>
+  </app-paginator>
 </div>

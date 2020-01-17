@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {AppGlobals} from '../../../app-globals';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Properties} from '../../../models/properties';
+import {PropertiesService} from '../../../services/properties.service';
 
 @Component({
   selector: 'app-properties-accordion',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./properties-accordion.component.css']
 })
 export class PropertiesAccordionComponent implements OnInit {
-
-  constructor() { }
+  property: Properties[] = [];
+  properties: Properties = new Properties();
+  constructor(private propertiesService: PropertiesService,
+              private activatedRoute: ActivatedRoute,
+              public appGlobals: AppGlobals,
+              private router: Router
+              ) { }
 
   ngOnInit() {
+
   }
 
 }

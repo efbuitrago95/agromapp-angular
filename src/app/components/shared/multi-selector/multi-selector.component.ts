@@ -6,6 +6,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./multi-selector.component.css']
 })
 export class MultiSelectorComponent implements OnInit {
+  eventArray = [];
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
@@ -30,6 +31,12 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   onItemSelect(event) {
+    console.log('event', event);
+    this.selectedItems = [];
+    if (!Array.isArray(event)) {
+      this.selectedItems.push(event);
+    }
     this.changeSelect.emit(this.selectedItems);
   }
+
 }
