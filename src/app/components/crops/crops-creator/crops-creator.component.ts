@@ -91,7 +91,6 @@ export class CropsCreatorComponent implements OnInit {
       this.params.language = this.crop.idlanguage;
       this.propertiesService.get(this.params).subscribe((res: any) => {
       this.properties = res.results;
-      console.log(this.properties);
       });
     }
   }

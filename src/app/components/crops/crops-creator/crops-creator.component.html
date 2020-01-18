@@ -1,5 +1,5 @@
 <div class="container my-3">
-    <div class="col-md-7 m-auto">
+    <div class="col-md-12 m-auto">
       <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
         <h4 class="form-header text-center bg-warning">Crear Cultivo</h4>
         <div class="form-group text-left">
@@ -13,7 +13,7 @@
               *ngIf="languages.length > 0"
               [listItems]="languages"
               [placeholder]="'Seleccionar idioma'"
-              [single]='false'
+              [single]='"true"'
               [listItemsSelected]="selectLanguage">
             </app-multi-selector>
           </div>
@@ -87,17 +87,16 @@
               (changeSelect)="changeProperties($event)"
               *ngIf="properties.length > 0"
               [listItems]="properties"
-              [placeholder]="'Seleccionar propiedad'"
+              [placeholder]="'Seleccionar hola'"
               [single]='false'
               [listItemsSelected]="selectProperty">
             </app-multi-selector>
           </div>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group text-center mt-2 mb-4">
           <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
         </div>
-
+        <app-properties-accordion [propertyLanguage]="property" *ngFor="let property of properties"></app-properties-accordion>
       </form>
-
     </div>
 </div>

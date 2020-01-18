@@ -1,14 +1,27 @@
 <div class="accordion" id="accordionproperties">
-    <div class="card  ">
-        <div class="card-header bg-warning text-center" id="headingOne" data-toggle="collapse" data-target="#collapitems" >
-        <h4>propiedad</h4>
-        </div>
-        <div id="collapitems" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionproperties">
-            <div class="card-body border border-warning">
-                <form role="form" class="form-width">
-                    <app-items-accordion class="mt-2"></app-items-accordion>
-                </form>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-header bg-warning text-center" id="headingOne" data-toggle="collapse"
+         [attr.data-target]="'#'+ 'abc' + propertyLanguage.id">
+      <h4>{{propertyLanguage.name}}</h4>
     </div>
+    <div [attr.id]="'abc' + propertyLanguage.id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionproperties">
+      <div class="card-body border border-warning">
+        <div class="row">
+          <div class="from-group col-md-12">
+            <app-multi-selector
+              (changeSelect)="changepropertiesItems($event)"
+              *ngIf="propertiesitems1.length > 0"
+              [listItems]="propertiesitems1"
+              [placeholder]="'Seleccionar propiedad'"
+              [single]='false'
+              [listItemsSelected]="selectPropertiesItems">
+            </app-multi-selector>
+          </div>
+        </div>
+        <form role="form" class="form-width mt-3">
+          <app-items-accordion class="mt-2"></app-items-accordion>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
