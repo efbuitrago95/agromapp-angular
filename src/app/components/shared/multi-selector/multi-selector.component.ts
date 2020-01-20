@@ -31,11 +31,11 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   onItemSelect(event) {
-    console.log('event', event);
+    /*console.log('event', event);
     this.selectedItems = [];
     if (!Array.isArray(event)) {
       this.selectedItems.push(event);
-    }
+    }*/
     this.changeSelect.emit(this.selectedItems);
   }
 

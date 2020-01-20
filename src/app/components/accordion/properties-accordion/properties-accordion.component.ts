@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {AppGlobals} from '../../../app-globals';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Properties} from '../../../models/properties';
@@ -13,17 +13,20 @@ import {PropertiesitemsService} from '../../../services/propertiesitems.service'
 })
 export class PropertiesAccordionComponent implements OnInit {
   @Input() propertyLanguage: Properties = new Properties();
-  params: any =  {};
+  params: any = {};
   property: Properties[] = [];
   propertiesitems: Propertiesitems = new Propertiesitems();
   propertiesitems1: Propertiesitems[] = [];
+  propertiesitems1selected: Propertiesitems[] = [];
   selectPropertiesItems = [];
+
   constructor(private propertiesService: PropertiesService,
               private propertiesitemsService: PropertiesitemsService,
               private activatedRoute: ActivatedRoute,
               public appGlobals: AppGlobals,
               private router: Router
-              ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getpropertiesItems();
@@ -33,10 +36,11 @@ export class PropertiesAccordionComponent implements OnInit {
   changepropertiesItems(selectedItems) {
     console.log('select items', selectedItems);
     if (selectedItems[0]) {
+      this.propertiesitems1selected = selectedItems;
       this.propertiesitems.idProperty = selectedItems[0].id;
       this.params.property = this.propertiesitems.idProperty;
       this.propertiesService.get(this.params).subscribe((res: any) => {
-        this.propertiesitems1 = res.results;
+        // this.propertiesitems1 = res.results;
       });
     }
   }

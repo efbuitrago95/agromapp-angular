@@ -12,15 +12,19 @@
               (changeSelect)="changepropertiesItems($event)"
               *ngIf="propertiesitems1.length > 0"
               [listItems]="propertiesitems1"
-              [placeholder]="'Seleccionar propiedad'"
+              [placeholder]="'Seleccionar subpropiedad'"
               [single]='false'
               [listItemsSelected]="selectPropertiesItems">
             </app-multi-selector>
           </div>
         </div>
-        <form role="form" class="form-width mt-3">
-          <app-items-accordion class="mt-2"></app-items-accordion>
-        </form>
+        <div class="mt-2">
+          <pre>
+            {{propertiesitems1selected | json}}
+          </pre>
+          <app-items-accordion *ngFor="let item of propertiesitems1selected" class="mt-2"></app-items-accordion>
+        </div>
+
       </div>
     </div>
   </div>
