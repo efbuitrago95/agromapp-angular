@@ -4,7 +4,7 @@
          [attr.data-target]="'#'+ 'abc' + propertyLanguage.id">
       <h4>{{propertyLanguage.name}}</h4>
     </div>
-    <div [attr.id]="'abc' + propertyLanguage.id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionproperties">
+    <div [attr.id]="'abc' + propertyLanguage.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordionproperties">
       <div class="card-body border border-warning">
         <div class="row">
           <div class="from-group col-md-12">
@@ -19,10 +19,7 @@
           </div>
         </div>
         <div class="mt-2">
-          <pre>
-            {{propertiesitems1selected | json}}
-          </pre>
-          <app-items-accordion *ngFor="let item of propertiesitems1selected" class="mt-2"></app-items-accordion>
+          <app-items-accordion [property]="item" *ngFor="let item of propertiesitems1selected" class="mt-2"></app-items-accordion>
         </div>
 
       </div>
