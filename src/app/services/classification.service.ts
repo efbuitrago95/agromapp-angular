@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Crops } from '../models/crops';
+import { Classifications } from '../models/classifications';
 import {AppGlobals} from '../app-globals';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CropsService {
+export class ClassificationService {
 
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
   getById(id: number) {
-    return this.http.get( this.apiUrl + 'crops/' + id);
+    return this.http.get( this.apiUrl + 'classifications/' + id);
   }
 
   get(params: any[] = null) {
@@ -23,19 +23,19 @@ export class CropsService {
       paramsUrl = this.appGlobals.paramsConvert(params);
     }
 
-    return this.http.get(this.apiUrl + 'crops' + paramsUrl);
+    return this.http.get(this.apiUrl + 'classifications' + paramsUrl);
   }
 
-  create(crop: Crops) {
-    return this.http.post(this.apiUrl + 'crops', JSON.stringify(crop), {
+  create(classification: Classifications) {
+    return this.http.post(this.apiUrl + 'classifications', JSON.stringify(classification), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     });
   }
 
-  update(crop: Crops) {
-    return this.http.put(this.apiUrl + 'crops', JSON.stringify(crop), {
+  update(classification: Classifications) {
+    return this.http.put(this.apiUrl + 'classifications', JSON.stringify(classification), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

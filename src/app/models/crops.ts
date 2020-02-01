@@ -8,10 +8,10 @@ export class Crops {
   commonName: number;
   otherCommonNames: number;
   taxonomicFamily: number;
-  classification: number;
-  picture: number;
+  picture: string;
   video: number;
   record: number;
-  idlanguage: number
+  idlanguage: number;
+  idClassification: number;
   languages: Languages;
 }

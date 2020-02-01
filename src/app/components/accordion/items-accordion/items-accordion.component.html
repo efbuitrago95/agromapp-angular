@@ -1,10 +1,12 @@
 <div class="accordion" id="accordionitem">
   <div class="card  ">
-    <div class="card-header bg-warning text-center" id="headingOne" data-toggle="collapse"
-         [attr.data-target]="'#'+ 'abc' + property.id + property.name">
+    <div class="card-header bg-warning d-flex justify-content-between">
       <h4>{{property.name}}</h4>
+      <button class="btn bg-transparent align-items-center" [attr.id]="property.id" data-toggle="collapse"
+              [attr.data-target]="'#'+ 'abcd' + property.id"><i class="fa fa-plus"></i>
+      </button>
     </div>
-    <div [attr.id]="'abc' + property.id + property.name" class="collapse" aria-labelledby="headingOne"
+    <div [attr.id]="'abcd' + property.id" class="collapse"[attr.aria-labelledby]="property.id"
          data-parent="#accordionitem">
       <div class="card-body border border-warning">
         <form role="form" class="form-width">

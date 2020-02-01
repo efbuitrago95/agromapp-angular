@@ -15,9 +15,9 @@ export class PropertiesAccordionComponent implements OnInit {
   @Input() propertyLanguage: Properties = new Properties();
   params: any = {};
   property: Properties[] = [];
-  propertiesitems: Propertiesitems = new Propertiesitems();
-  propertiesitems1: Propertiesitems[] = [];
-  propertiesitems1selected: Propertiesitems[] = [];
+  propertiesitemsobject: Propertiesitems = new Propertiesitems();
+  propertiesitemsarray: Propertiesitems[] = [];
+  propertiesitemsselected: Propertiesitems[] = [];
   selectPropertiesItems = [];
 
   constructor(private propertiesService: PropertiesService,
@@ -30,17 +30,14 @@ export class PropertiesAccordionComponent implements OnInit {
 
   ngOnInit() {
     this.getpropertiesItems();
-
   }
 
   changepropertiesItems(selectedItems) {
-    console.log('select items', selectedItems);
     if (selectedItems[0]) {
-      this.propertiesitems1selected = selectedItems;
-      this.propertiesitems.idProperty = selectedItems[0].id;
-      this.params.property = this.propertiesitems.idProperty;
+      this.propertiesitemsselected = selectedItems;
+      this.propertiesitemsobject.idProperty = selectedItems[0].id;
+      this.params.property = this.propertiesitemsobject.idProperty;
       this.propertiesService.get(this.params).subscribe((res: any) => {
-        // this.propertiesitems1 = res.results;
       });
     }
   }
@@ -48,9 +45,9 @@ export class PropertiesAccordionComponent implements OnInit {
   getpropertiesItems() {
     this.params.property = this.propertyLanguage.id;
     this.propertiesitemsService.get(this.params).subscribe((res: any) => {
-      this.propertiesitems1 = [];
-      Object.assign(this.propertiesitems1, res.results);
-      console.log('Properties items', this.propertiesitems1);
+      this.propertiesitemsarray = [];
+      Object.assign(this.propertiesitemsarray, res.results);
+      console.log('Properties items', this.propertiesitemsarray);
     });
   }
 }

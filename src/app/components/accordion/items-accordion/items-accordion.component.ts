@@ -13,7 +13,7 @@ export class ItemsAccordionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('llego algo', this.property);
+    console.log('llego algo a items accordion', this.property);
   }
 
 }

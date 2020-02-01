@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import {Crops} from '../../../models/crops';
 import {Languages} from '../../../models/languages';
 import {Properties} from '../../../models/properties';
+import {Classifications} from '../../../models/classifications';
 import {LanguagesService} from '../../../services/languages.service';
 import {PropertiesService} from '../../../services/properties.service';
+import {ClassificationService} from '../../../services/classification.service';
 import {CropsService} from '../../../services/crops.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppGlobals} from '../../../app-globals';
@@ -20,23 +22,7 @@ export class CropsCreatorComponent implements OnInit {
   properties: Properties[] = [];
   selectProperty = [];
   propertiesAccordion: Properties[] = [];
-  Classifications = [
-    {id: 1, name: 'Aromatica de flor y fruto'},
-    {id: 2, name: 'Aromaticas medicinales'},
-    {id: 3, name: 'Aromatica de hoja'},
-    {id: 4, name: 'Hortaliza de hoja'},
-    {id: 5, name: 'Hortaliza de flor y fruto'},
-    {id: 6, name: 'Hortalizas de bulbo'},
-    {id: 7, name: 'Frutales'},
-    {id: 8, name: 'Granos secos'},
-    {id: 9, name: 'Leguminosas'},
-    {id: 10, name: 'Ornamentales'},
-    {id: 11, name: 'Cereales'},
-    {id: 12, name: 'Gramineas'},
-    {id: 13, name: 'Forestales'},
-    {id: 14, name: 'Hongos'},
-    {id: 15, name: 'Algas'}
-  ];
+  classifications: Classifications[] = [];
   selectedClassification = [];
   languages: Languages[] = [];
   selectLanguage = [];
@@ -47,6 +33,7 @@ export class CropsCreatorComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private languagesService: LanguagesService,
               private propertiesService: PropertiesService,
+              private classificationService: ClassificationService,
               private cropsService: CropsService,
               public appGlobals: AppGlobals,
               private router: Router) { }
@@ -56,8 +43,6 @@ export class CropsCreatorComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log('es este', this.crop.idlanguage);
-    return ;
     const id = Math.random().toString(36).substring(2);
     try {
       const ref = firebase.storage().ref(`flags/${id}`);
@@ -67,8 +52,8 @@ export class CropsCreatorComponent implements OnInit {
             this.crop.picture = url;
             this.cropsService.create(this.crop).subscribe(
               res => {
-                this.appGlobals.alertSuccess('País creado con éxito');
-                this.router.navigate(['/countries']);
+                this.appGlobals.alertSuccess('Cultivo creado con éxito');
+                this.router.navigate(['/crops']);
               },
               error => {
                 this.appGlobals.alertError(error.error);
@@ -87,17 +72,22 @@ export class CropsCreatorComponent implements OnInit {
 
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
+      this.properties = [];
+      this.classifications = [];
       this.crop.idlanguage = selectedItems[0].id;
       this.params.language = this.crop.idlanguage;
       this.propertiesService.get(this.params).subscribe((res: any) => {
       this.properties = res.results;
+      });
+      this.classificationService.get(this.params).subscribe((res: any) => {
+        this.classifications = res.results;
       });
     }
   }
 
   changeClassifications(selectedItems) {
     if (selectedItems[0]) {
-      this.crop.classification = selectedItems;
+      this.crop.idClassification = selectedItems[0].id;
     }
   }
 

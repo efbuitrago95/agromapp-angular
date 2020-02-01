@@ -46,10 +46,10 @@
           <div class="from-group col-md-12 mb-3">
             <app-multi-selector
               (changeSelect)="changeClassifications($event)"
-              *ngIf="Classifications.length > 0"
-              [listItems]="Classifications"
+              *ngIf="classifications.length > 0"
+              [listItems]="classifications"
               [placeholder]="'Seleccionar la clasificación'"
-              [single]= 'false'
+              [single]= '"true"'
               [listItemsSelected]="selectedClassification">
             </app-multi-selector>
           </div>
@@ -87,7 +87,7 @@
               (changeSelect)="changeProperties($event)"
               *ngIf="properties.length > 0"
               [listItems]="properties"
-              [placeholder]="'Seleccionar hola'"
+              [placeholder]="'Seleccionar propiedad'"
               [single]='false'
               [listItemsSelected]="selectProperty">
             </app-multi-selector>

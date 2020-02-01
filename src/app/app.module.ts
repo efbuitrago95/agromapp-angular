@@ -68,6 +68,9 @@ import { RolesEditorComponent } from './components/roles/roles-editor/roles-edit
 import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
 import { LoginComponent } from './components/login/login.component';
 import * as firebase from 'firebase';
+import { ClassificationCreateComponent } from './components/classification/classification-create/classification-create.component';
+import { ClassificationEditorComponent } from './components/classification/classification-editor/classification-editor.component';
+import { ClassificationListComponent } from './components/classification/classification-list/classification-list.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -107,7 +110,10 @@ firebase.initializeApp(environment.firebaseConfig);
     RolesCreatorComponent,
     RolesEditorComponent,
     ListRolesComponent,
-    LoginComponent
+    LoginComponent,
+    ClassificationCreateComponent,
+    ClassificationEditorComponent,
+    ClassificationListComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +141,7 @@ firebase.initializeApp(environment.firebaseConfig);
     NgMultiSelectDropDownModule.forRoot(),
     ImageUploadModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [
     AppGlobals,

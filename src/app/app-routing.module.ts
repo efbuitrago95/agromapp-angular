@@ -27,6 +27,9 @@ import {ListRolesComponent} from './components/roles/list-roles/list-roles.compo
 import {RolesCreatorComponent} from './components/roles/roles-creator/roles-creator.component';
 import {RolesEditorComponent} from './components/roles/roles-editor/roles-editor.component';
 import {LoginComponent} from './components/login/login.component';
+import {ClassificationListComponent} from './components/classification/classification-list/classification-list.component';
+import {ClassificationCreateComponent} from './components/classification/classification-create/classification-create.component';
+import {ClassificationEditorComponent} from './components/classification/classification-editor/classification-editor.component';
 
 
 
@@ -39,6 +42,7 @@ const routes: Routes = [
   {path: 'categories', component: ListCategoriesComponent},
   {path: 'crops', component: ListCropsComponent},
   {path: 'roles', component: ListRolesComponent },
+  {path: 'classifications', component: ClassificationListComponent },
   {path: 'login', component: LoginComponent },
   // creator and editor
   {path: 'languages/creator', component: LanguagesCreateComponent },
@@ -60,6 +64,9 @@ const routes: Routes = [
   {path: 'properties-accodion', component: PropertiesAccordionComponent },
   {path: 'roles/creator', component: RolesCreatorComponent },
   {path: 'roles/editor/:id', component: RolesEditorComponent },
+  {path: 'classifications/creator', component: ClassificationCreateComponent },
+  {path: 'classifications/editor/:id', component: ClassificationEditorComponent }
+
 ];
 
 @NgModule({
