@@ -1,0 +1,32 @@
+<div class="container my-3">
+  <div class="col-md-7 m-auto">
+    <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
+      <h4 class="form-header text-center bg-warning">Crear clasificación</h4>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Información</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <app-multi-selector
+            (changeSelect)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]="'true'"
+            [listItemsSelected]="selectLanguage">
+          </app-multi-selector>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input [(ngModel)]="classifications.name" name="name" type="text" class="form-control"
+                 placeholder="Nombre de la clasificación" required>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>
