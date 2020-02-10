@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {AppGlobals} from '../../../app-globals';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Properties} from '../../../models/properties';
-import {Propertiesitems} from '../../../models/propertiesitems';
+import {PropertiesItems} from '../../../models/propertiesItems';
 import {PropertiesService} from '../../../services/properties.service';
 import {PropertiesitemsService} from '../../../services/propertiesitems.service';
 
@@ -15,9 +15,9 @@ export class PropertiesAccordionComponent implements OnInit {
   @Input() propertyLanguage: Properties = new Properties();
   params: any = {};
   property: Properties[] = [];
-  propertiesitemsobject: Propertiesitems = new Propertiesitems();
-  propertiesitemsarray: Propertiesitems[] = [];
-  propertiesitemsselected: Propertiesitems[] = [];
+  propertiesitemsobject: PropertiesItems = new PropertiesItems();
+  propertiesitemsarray: PropertiesItems[] = [];
+  propertiesitemsselected: PropertiesItems[] = [];
   selectPropertiesItems = [];
 
   constructor(private propertiesService: PropertiesService,

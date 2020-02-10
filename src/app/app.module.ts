@@ -71,6 +71,13 @@ import * as firebase from 'firebase';
 import { ClassificationCreateComponent } from './components/classification/classification-create/classification-create.component';
 import { ClassificationEditorComponent } from './components/classification/classification-editor/classification-editor.component';
 import { ClassificationListComponent } from './components/classification/classification-list/classification-list.component';
+import { MoonCreateComponent } from './components/moon/moon-create/moon-create.component';
+import { MoonEditorComponent } from './components/moon/moon-editor/moon-editor.component';
+import { MoonListComponent } from './components/moon/moon-list/moon-list.component';
+import { MoonItemsComponent } from './components/accordion/moon-items/moon-items.component';
+import { ClassificationItemsCreatorComponent } from './components/classification-items/classification-items-creator/classification-items-creator.component';
+import { ClassificationItemsListComponent } from './components/classification-items/classification-items-list/classification-items-list.component';
+import { ClassificationItemsEditorComponent } from './components/classification-items/classification-items-editor/classification-items-editor.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -113,7 +120,14 @@ firebase.initializeApp(environment.firebaseConfig);
     LoginComponent,
     ClassificationCreateComponent,
     ClassificationEditorComponent,
-    ClassificationListComponent
+    ClassificationListComponent,
+    MoonCreateComponent,
+    MoonEditorComponent,
+    MoonListComponent,
+    MoonItemsComponent,
+    ClassificationItemsCreatorComponent,
+    ClassificationItemsListComponent,
+    ClassificationItemsEditorComponent
   ],
   imports: [
     BrowserModule,

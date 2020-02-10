@@ -15,15 +15,3 @@
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-.active-amber-textarea textarea.md-textarea {
-  border-bottom: 1px solid #ffa000;
-  box-shadow: 0 1px 0 0 #ffa000;
-}
-
-textarea {
-  resize: vertical;
-  max-height: 20rem;
-  min-height: 5rem;
-}
-

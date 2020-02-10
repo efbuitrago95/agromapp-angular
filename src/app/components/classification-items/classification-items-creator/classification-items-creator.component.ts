@@ -1,25 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Languages} from '../../../models/languages';
-import {Properties} from '../../../models/properties';
+import {ClassificationItems} from '../../../models/classificationItems';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguagesService} from '../../../services/languages.service';
-import {PropertiesService} from '../../../services/properties.service';
+import {ClassificationItemsService} from '../../../services/classificationItems.service';
 import {AppGlobals} from '../../../app-globals';
 
 @Component({
-  selector: 'app-properties-create',
-  templateUrl: './properties-create.component.html',
-  styleUrls: ['./properties-create.component.css']
+  selector: 'app-classification-items-creator',
+  templateUrl: './classification-items-creator.component.html',
+  styleUrls: ['./classification-items-creator.component.css']
 })
-export class PropertiesCreateComponent implements OnInit {
+export class ClassificationItemsCreatorComponent implements OnInit {
   languages: Languages[] = [];
   selectLanguage = [];
-  property: Properties = new Properties();
+  classificationItem: ClassificationItems = new ClassificationItems();
   id: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private languagesServices: LanguagesService,
-              private propertiesService: PropertiesService,
+              private classificationItemsService: ClassificationItemsService,
               public appGlobals: AppGlobals,
               private router: Router) {
   }
@@ -29,10 +29,10 @@ export class PropertiesCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.propertiesService.create(this.property).subscribe(
+    this.classificationItemsService.create(this.classificationItem).subscribe(
       res => {
-        this.appGlobals.alertSuccess('Propiedad creada con éxito');
-        this.router.navigate(['/properties']);
+        this.appGlobals.alertSuccess('Item creado con éxito');
+        this.router.navigate(['/classification_items']);
       },
       error => {
         this.appGlobals.alertError(error.error);
@@ -42,7 +42,7 @@ export class PropertiesCreateComponent implements OnInit {
 
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
-      this.property.idLanguage = selectedItems[0].id;
+      this.classificationItem.idLanguage = selectedItems[0].id;
     }
   }
 

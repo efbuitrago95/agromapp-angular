@@ -1,4 +1,4 @@
-import {Propertiesitems} from './propertiesitems';
+import {PropertiesItems} from './propertiesItems';
 import {Crops} from './crops';
 
 export class CropsItems {
@@ -8,6 +8,6 @@ export class CropsItems {
   record: string;
   idItem: number;
   idCrop: number;
-  propertiesItems: Propertiesitems;
+  propertiesItems: PropertiesItems;
   crops: Crops;
 }

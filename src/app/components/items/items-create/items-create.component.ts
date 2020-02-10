@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Properties} from '../../../models/properties';
-import {Propertiesitems} from '../../../models/propertiesitems';
+import {PropertiesItems} from '../../../models/propertiesItems';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PropertiesService} from '../../../services/properties.service';
 import {PropertiesitemsService} from '../../../services/propertiesitems.service';
@@ -15,7 +15,7 @@ import {AppGlobals} from '../../../app-globals';
 export class ItemsCreateComponent implements OnInit {
   properties: Properties[] = [];
   selectProperty = [];
-  propertyitems: Propertiesitems = new Propertiesitems();
+  propertyitems: PropertiesItems = new PropertiesItems();
   id: number;
 
   constructor(private activatedRoute: ActivatedRoute,

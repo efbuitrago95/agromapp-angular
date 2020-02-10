@@ -23,6 +23,7 @@ import {CropsCreatorComponent} from './components/crops/crops-creator/crops-crea
 import {CropsEditorComponent} from './components/crops/crops-editor/crops-editor.component';
 import {MultiSelectorComponent} from './components/shared/multi-selector/multi-selector.component'
 import {PropertiesAccordionComponent} from './components/accordion/properties-accordion/properties-accordion.component';
+import {MoonItemsComponent} from './components/accordion/moon-items/moon-items.component';
 import {ListRolesComponent} from './components/roles/list-roles/list-roles.component';
 import {RolesCreatorComponent} from './components/roles/roles-creator/roles-creator.component';
 import {RolesEditorComponent} from './components/roles/roles-editor/roles-editor.component';
@@ -30,6 +31,13 @@ import {LoginComponent} from './components/login/login.component';
 import {ClassificationListComponent} from './components/classification/classification-list/classification-list.component';
 import {ClassificationCreateComponent} from './components/classification/classification-create/classification-create.component';
 import {ClassificationEditorComponent} from './components/classification/classification-editor/classification-editor.component';
+import {MoonListComponent} from './components/moon/moon-list/moon-list.component';
+import {MoonCreateComponent} from './components/moon/moon-create/moon-create.component';
+import {MoonEditorComponent} from './components/moon/moon-editor/moon-editor.component';
+import {ClassificationItemsListComponent} from './components/classification-items/classification-items-list/classification-items-list.component';
+import {ClassificationItemsCreatorComponent} from './components/classification-items/classification-items-creator/classification-items-creator.component';
+import {ClassificationItemsEditorComponent} from './components/classification-items/classification-items-editor/classification-items-editor.component';
+
 
 
 
@@ -44,6 +52,8 @@ const routes: Routes = [
   {path: 'roles', component: ListRolesComponent },
   {path: 'classifications', component: ClassificationListComponent },
   {path: 'login', component: LoginComponent },
+  {path: 'moon', component: MoonListComponent },
+  {path: 'classification-items', component: ClassificationItemsListComponent },
   // creator and editor
   {path: 'languages/creator', component: LanguagesCreateComponent },
   {path: 'languages/editor/:id', component: LanguagesEditorComponent },
@@ -62,11 +72,15 @@ const routes: Routes = [
   {path: 'crops/editor/:id', component: CropsEditorComponent },
   {path: 'selector', component: MultiSelectorComponent },
   {path: 'properties-accodion', component: PropertiesAccordionComponent },
+  {path: 'moon-accodion', component: MoonItemsComponent },
   {path: 'roles/creator', component: RolesCreatorComponent },
   {path: 'roles/editor/:id', component: RolesEditorComponent },
   {path: 'classifications/creator', component: ClassificationCreateComponent },
-  {path: 'classifications/editor/:id', component: ClassificationEditorComponent }
-
+  {path: 'classifications/editor/:id', component: ClassificationEditorComponent },
+  {path: 'moon/creator', component: MoonCreateComponent },
+  {path: 'moon/editor/:id', component: MoonEditorComponent },
+  {path: 'classification-items/creator', component: ClassificationItemsCreatorComponent },
+  {path: 'classification-items/editor/:id', component: ClassificationItemsEditorComponent }
 ];
 
 @NgModule({

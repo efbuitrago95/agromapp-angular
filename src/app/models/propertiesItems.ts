@@ -1,6 +1,6 @@
 import {Properties} from './properties';
 
-export class Propertiesitems {
+export class PropertiesItems {
   id: number;
   name: string;
   idProperty: number;

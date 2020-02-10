@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Properties} from '../../../models/properties';
-import {Propertiesitems} from '../../../models/propertiesitems';
+import {PropertiesItems} from '../../../models/propertiesItems';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PropertiesService} from '../../../services/properties.service';
 import {PropertiesitemsService} from '../../../services/propertiesitems.service';
@@ -14,7 +14,7 @@ import {AppGlobals} from '../../../app-globals';
 export class ItemsEditorComponent implements OnInit {
   properties: Properties[] = [];
   selectProperty = [];
-  propertyItems: Propertiesitems = new Propertiesitems();
+  propertyItems: PropertiesItems = new PropertiesItems();
   id: number;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -27,7 +27,7 @@ export class ItemsEditorComponent implements OnInit {
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
     this.propertiesItemsService.getById(this.id).subscribe((res: any) => {
-      this.propertyItems = new Propertiesitems();
+      this.propertyItems = new PropertiesItems();
       this.selectProperty = [];
       Object.assign(this.propertyItems, res);
       this.selectProperty.push(this.propertyItems.properties);

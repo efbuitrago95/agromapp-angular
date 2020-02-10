@@ -1,0 +1,53 @@
+<div class="container my-3">
+  <div class="col-md-12 m-auto">
+    <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
+      <h4 class="form-header text-center bg-warning">Editar luna</h4>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Información</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="from-group col-md-12">
+          <app-multi-selector
+            (changeSelect)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]='"true"'
+            [listItemsSelected]="selectLanguage">
+          </app-multi-selector>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="from-group col-md-12 mb-3">
+          <app-multi-selector
+            (changeSelect)="changeClassifications($event)"
+            *ngIf="classifications.length > 0"
+            [listItems]="classifications"
+            [placeholder]="'Seleccionar la clasificación'"
+            [single]= '"true"'
+            [listItemsSelected]="selectedClassification">
+          </app-multi-selector>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input type="text" class="form-control" placeholder="Nombre de la luna">
+        </div>
+      </div>
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 form-group active-amber-textarea">
+              <textarea class="md-textarea form-control" name="textarea-subitem"
+                        placeholder="Descripción del item"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-center mt-2 mb-4">
+        <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

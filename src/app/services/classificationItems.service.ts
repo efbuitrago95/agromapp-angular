@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PropertiesItems } from '../models/propertiesItems';
+import { ClassificationItems } from '../models/classificationItems';
 import {AppGlobals} from '../app-globals';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PropertiesitemsService {
+export class ClassificationItemsService {
 
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
   getById(id: number) {
-    return this.http.get( this.apiUrl + 'items/' + id);
+    return this.http.get( this.apiUrl + 'classification_items/' + id);
   }
 
   get(params: any[] = null) {
@@ -23,19 +23,19 @@ export class PropertiesitemsService {
       paramsUrl = this.appGlobals.paramsConvert(params);
     }
 
-    return this.http.get(this.apiUrl + 'items' + paramsUrl);
+    return this.http.get(this.apiUrl + 'classification_items' + paramsUrl);
   }
 
-  create(Property: PropertiesItems) {
-    return this.http.post(this.apiUrl + 'items', JSON.stringify(Property), {
+  create(classificationItems: ClassificationItems) {
+    return this.http.post(this.apiUrl + 'classification_items', JSON.stringify(classificationItems), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     });
   }
 
-  update(Property: PropertiesItems) {
-    return this.http.put(this.apiUrl + 'items', JSON.stringify(Property), {
+  update(classificationItems: ClassificationItems) {
+    return this.http.put(this.apiUrl + 'classification_items', JSON.stringify(classificationItems), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

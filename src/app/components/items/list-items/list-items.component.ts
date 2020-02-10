@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Properties} from '../../../models/properties';
 import {PropertiesService} from '../../../services/properties.service';
 import {PropertiesitemsService} from '../../../services/propertiesitems.service';
-import {Propertiesitems} from 'src/app/models/propertiesitems';
+import {PropertiesItems} from 'src/app/models/propertiesItems';
 import {AppGlobals} from '../../../app-globals';
 
 @Component({
@@ -11,7 +11,7 @@ import {AppGlobals} from '../../../app-globals';
   styleUrls: ['./list-items.component.css']
 })
 export class ListItemsComponent implements OnInit {
-  propertyItems: Propertiesitems[] = [];
+  propertyItems: PropertiesItems[] = [];
   properties: Properties[] = [];
   params: any = {};
   paginationData: any = {};

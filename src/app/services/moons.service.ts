@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PropertiesItems } from '../models/propertiesItems';
+import { Moons } from '../models/moons';
 import {AppGlobals} from '../app-globals';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PropertiesitemsService {
+export class MoonsService {
 
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private appGlobals: AppGlobals) { }
 
   getById(id: number) {
-    return this.http.get( this.apiUrl + 'items/' + id);
+    return this.http.get( this.apiUrl + 'moons/' + id);
   }
 
   get(params: any[] = null) {
@@ -23,19 +23,19 @@ export class PropertiesitemsService {
       paramsUrl = this.appGlobals.paramsConvert(params);
     }
 
-    return this.http.get(this.apiUrl + 'items' + paramsUrl);
+    return this.http.get(this.apiUrl + 'moons' + paramsUrl);
   }
 
-  create(Property: PropertiesItems) {
-    return this.http.post(this.apiUrl + 'items', JSON.stringify(Property), {
+  create(moon: Moons) {
+    return this.http.post(this.apiUrl + 'moons', JSON.stringify(moon), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     });
   }
 
-  update(Property: PropertiesItems) {
-    return this.http.put(this.apiUrl + 'items', JSON.stringify(Property), {
+  update(moon: Moons) {
+    return this.http.put(this.apiUrl + 'moons', JSON.stringify(moon), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
