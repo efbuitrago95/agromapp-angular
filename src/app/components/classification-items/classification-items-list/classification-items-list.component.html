@@ -1,1 +1,54 @@
-<p>classification-items-list works!</p>
+<div class="container my-4">
+  <div class="titleTables">
+    <h2 class="d-flex m-0 align-items-center">Listado de Classificación items</h2>
+    <button [routerLink]="['creator']" class="btn bg-transparent d-flex align-items-center"><i class="fa fa-plus"></i>
+    </button>
+  </div>
+  <form class="form group">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <app-multi-selector
+          (changeSelect)="changeLanguage($event)"
+          *ngIf="languages.length > 0"
+          [listItems]="languages"
+          [placeholder]="'Seleccionar idioma'"
+          [single]="'true'">
+        </app-multi-selector>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <app-input-search (onSearch)="changeSearch($event)"></app-input-search>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-12">
+    <div class="w-100 d-flex justify-content-start">
+      <p class="text-muted"> 20 resultados</p>
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">idioma</th>
+        <th scope="col">Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let items of classificationItems">
+        <th>{{items.id}}</th>
+        <td>{{items.name}}</td>
+        <td>{{items.languages.name}}</td>
+        <td class="text-center">
+          <button [routerLink]="['editor', items.id]" class="btn">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-paginator *ngIf="paginationData.totalItems" (pageCalc)="changePage($event)"
+                 [paginationData]=paginationData></app-paginator>
+</div>

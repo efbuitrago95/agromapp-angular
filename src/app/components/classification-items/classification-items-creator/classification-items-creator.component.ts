@@ -32,7 +32,7 @@ export class ClassificationItemsCreatorComponent implements OnInit {
     this.classificationItemsService.create(this.classificationItem).subscribe(
       res => {
         this.appGlobals.alertSuccess('Item creado con éxito');
-        this.router.navigate(['/classification_items']);
+        this.router.navigate(['/classification-items']);
       },
       error => {
         this.appGlobals.alertError(error.error);

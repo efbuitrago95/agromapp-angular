@@ -30,16 +30,28 @@
           </app-multi-selector>
         </div>
       </div>
+      <div class="row mt-2">
+        <div class="from-group col-md-12 mb-3">
+          <app-multi-selector
+            (changeSelect)="changeTypeMoons($event)"
+            *ngIf="moons.length > 0"
+            [listItems]="moons"
+            [placeholder]="'Seleccionar el tipo de luna'"
+            [single]= '"true"'
+            [listItemsSelected]="selectMoon">
+          </app-multi-selector>
+        </div>
+      </div>
       <div class="row">
         <div class="form-group col-md-12">
-          <input type="text" class="form-control" placeholder="Nombre de la luna">
+          <input [(ngModel)]="moon.name" name="name" type="text" class="form-control" placeholder="Nombre de la luna">
         </div>
       </div>
       <div class="row">
         <div class="container">
           <div class="row">
             <div class="col-md-12 form-group active-amber-textarea">
-              <textarea class="md-textarea form-control" name="textarea-subitem"
+              <textarea [(ngModel)]="moon.description" name="description" class="md-textarea form-control" name="textarea-subitem"
                         placeholder="Descripción del item"></textarea>
             </div>
           </div>
@@ -48,12 +60,6 @@
       <div class="form-group text-center mt-2 mb-4">
         <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
       </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <app-moon-items></app-moon-items>
-        </div>
-      </div>
-
     </form>
   </div>
 </div>

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Classifications} from '../../../models/classifications';
-import {Languages} from '../../../models/languages';
-import {Moons} from '../../../models/moons';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LanguagesService} from '../../../services/languages.service';
-import {ClassificationService} from '../../../services/classification.service';
-import {MoonsService} from '../../../services/moons.service';
-import {CropsService} from '../../../services/crops.service';
 import {AppGlobals} from '../../../app-globals';
 import * as firebase from 'firebase';
+import {Moons} from '../../../models/moons';
+import {Languages} from '../../../models/languages';
+import {Classifications} from '../../../models/classifications';
+import {TypeMoons} from '../../../models/typeMoons';
+import {MoonsService} from '../../../services/moons.service';
+import {LanguagesService} from '../../../services/languages.service';
+import {ClassificationService} from '../../../services/classification.service';
+import {TypeMoonsService} from '../../../services/typeMoons.service';
+
 
 
 @Component({
@@ -22,20 +24,22 @@ export class MoonCreateComponent implements OnInit {
   selectedClassification = [];
   languages: Languages[] = [];
   selectLanguage = [];
+  moons: TypeMoons[] = [];
+  selectMoon = [];
   moon: Moons = new Moons();
-  image = '';
 
 
   constructor(private activatedRoute: ActivatedRoute,
               private languagesService: LanguagesService,
               private moonsService: MoonsService,
               private classificationService: ClassificationService,
-              private cropsService: CropsService,
+              private typeMoonsService: TypeMoonsService,
               public appGlobals: AppGlobals,
               private router: Router) { }
 
   ngOnInit() {
     this.getLanguages();
+    this.getTypeMoons();
   }
 
   onSubmit() {
@@ -67,14 +71,24 @@ export class MoonCreateComponent implements OnInit {
     }
   }
 
-  changeImage(image) {
-    this.image = image;
+  changeTypeMoons(selectedItems) {
+    if (selectedItems[0]) {
+      this.moon.idTypeMoon = selectedItems[0].id;
+      console.log(selectedItems);
+    }
   }
 
   getLanguages() {
     this.languagesService.get().subscribe((res: any) => {
       this.languages = [];
       Object.assign(this.languages, res.results);
+    });
+  }
+
+  getTypeMoons() {
+    this.typeMoonsService.get().subscribe((res: any) => {
+      this.moons = [];
+      Object.assign(this.moons, res.results);
     });
   }
 }

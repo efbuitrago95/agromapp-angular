@@ -11,7 +11,6 @@ import {Languages} from 'src/app/models/languages';
   styleUrls: ['./properties.component.css']
 })
 export class PropertiesComponent implements OnInit {
-
   properties: Properties[] = [];
   languages: Languages[] = [];
   params: any = {};
