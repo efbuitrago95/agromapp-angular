@@ -20,7 +20,7 @@
         </div>
         <div class="row mt-2">
           <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.scientificName" name="scientificName" type="text" class="form-control" placeholder="Nombre científico">
+            <input [(ngModel)]="crop.scientificName" name="scientificName" [disabled]="cropRes.id" type="text" class="form-control" placeholder="Nombre científico">
           </div>
           <div class="form-group col-md-6">
             <input [(ngModel)]="crop.otherScientificNames" name="otherScientificNames" type="text" class="form-control" placeholder="Otro nombre científico">
@@ -96,7 +96,10 @@
         <div class="form-group text-center mt-2 mb-4">
           <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
         </div>
-        <app-properties-accordion [propertyLanguage]="property" *ngFor="let property of properties"></app-properties-accordion>
+        <!--*ngIf="cropRes.id !== undefined"-->
+        <ng-container>
+          <app-properties-accordion [propertyLanguage]="property" *ngFor="let property of propertiesAccordion"></app-properties-accordion>
+        </ng-container>
       </form>
     </div>
 </div>

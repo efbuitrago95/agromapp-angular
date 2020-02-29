@@ -25,6 +25,7 @@ export class ClassificationListComponent implements OnInit {
     this.params.page = 1;
     this.getLanguages();
     this.getProperties();
+    console.log(this.classifications);
   }
 
   getLanguages() {

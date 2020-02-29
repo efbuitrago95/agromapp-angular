@@ -27,6 +27,7 @@ export class CropsCreatorComponent implements OnInit {
   languages: Languages[] = [];
   selectLanguage = [];
   crop: Crops = new Crops();
+  cropRes: Crops = new Crops();
   image = '';
 
 
@@ -53,7 +54,8 @@ export class CropsCreatorComponent implements OnInit {
             this.cropsService.create(this.crop).subscribe(
               res => {
                 this.appGlobals.alertSuccess('Cultivo creado con éxito');
-                this.router.navigate(['/crops']);
+                Object.assign(this.cropRes, res);
+                // this.router.navigate(['/crops']);
               },
               error => {
                 this.appGlobals.alertError(error.error);
@@ -69,7 +71,6 @@ export class CropsCreatorComponent implements OnInit {
       console.log(e);
     }
   }
-
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
       this.properties = [];
@@ -95,6 +96,8 @@ export class CropsCreatorComponent implements OnInit {
     if (selectedItems[0]) {
       this.propertiesAccordion = selectedItems;
       console.log('accordeon', this.propertiesAccordion);
+    } else{
+      this.propertiesAccordion = [];
     }
   }
 

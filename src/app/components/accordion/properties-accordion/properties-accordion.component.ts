@@ -35,10 +35,13 @@ export class PropertiesAccordionComponent implements OnInit {
   changepropertiesItems(selectedItems) {
     if (selectedItems[0]) {
       this.propertiesitemsselected = selectedItems;
+      console.log('properties', this.propertiesitemsselected);
       this.propertiesitemsobject.idProperty = selectedItems[0].id;
       this.params.property = this.propertiesitemsobject.idProperty;
       this.propertiesService.get(this.params).subscribe((res: any) => {
       });
+    } else {
+      this.propertiesitemsselected = [];
     }
   }
 

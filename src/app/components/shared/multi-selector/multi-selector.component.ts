@@ -30,12 +30,8 @@ export class MultiSelectorComponent implements OnInit {
     };
   }
 
-  onItemSelect(event) {
-    /*console.log('event', event);
-    this.selectedItems = [];
-    if (!Array.isArray(event)) {
-      this.selectedItems.push(event);
-    }*/
+  onItemSelect() {
+    console.log(this.selectedItems);
     this.changeSelect.emit(this.selectedItems);
   }
 
