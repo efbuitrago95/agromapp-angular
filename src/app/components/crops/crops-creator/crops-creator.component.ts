@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Crops} from '../../../models/crops';
 import {Languages} from '../../../models/languages';
@@ -18,6 +18,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./crops-creator.component.css']
 })
 export class CropsCreatorComponent implements OnInit {
+  @Input() forCropsItems: Crops = new Crops();
   params: any =  {};
   properties: Properties[] = [];
   selectProperty = [];
@@ -55,7 +56,7 @@ export class CropsCreatorComponent implements OnInit {
               res => {
                 this.appGlobals.alertSuccess('Cultivo creado con éxito');
                 Object.assign(this.cropRes, res);
-                // this.router.navigate(['/crops']);
+                this.forCropsItems = this.cropRes;
               },
               error => {
                 this.appGlobals.alertError(error.error);
@@ -71,6 +72,7 @@ export class CropsCreatorComponent implements OnInit {
       console.log(e);
     }
   }
+
   changeLanguage(selectedItems) {
     if (selectedItems[0]) {
       this.properties = [];

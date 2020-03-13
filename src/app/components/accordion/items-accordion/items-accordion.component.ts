@@ -2,7 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CropsService} from '../../../services/crops.service';
 import {CropItemsService} from '../../../services/cropItems.service';
 import {CropsItems} from '../../../models/cropItems';
-import {PropertiesService} from '../../../services/properties.service';
+import {PropertiesItems} from '../../../models/propertiesItems';
+import {Gallery} from '../../../models/gallery';
+import {PropertiesitemsService} from '../../../services/propertiesitems.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppGlobals} from '../../../app-globals';
 import { HttpClient } from '@angular/common/http';
@@ -14,14 +16,14 @@ import * as firebase from 'firebase';
   styleUrls: ['./items-accordion.component.css']
 })
 export class ItemsAccordionComponent implements OnInit {
-
-  @Input() propertyItems;
+  @Input() propertyItems: PropertiesItems;
   cropItem: CropsItems = new CropsItems();
   cropItemRes: CropsItems = new CropsItems();
+  gallery: Gallery = new Gallery();
   image = '';
   constructor(private activatedRoute: ActivatedRoute,
               private cropItemsService: CropItemsService,
-              private propertiesService: PropertiesService,
+              private propertiesitemsService: PropertiesitemsService,
               private cropsService: CropsService,
               public appGlobals: AppGlobals,
               private router: Router) { }
@@ -36,11 +38,12 @@ export class ItemsAccordionComponent implements OnInit {
       await new Promise((resolve, reject) => {
         ref.putString(this.image, 'data_url').then(() => {
           ref.getDownloadURL().then((url) => {
-            /*this..picture = url;*/
+            this.gallery.photo = url;
             this.cropItemsService.create(this.cropItem).subscribe(
               res => {
-                this.appGlobals.alertSuccess('Item guardado con éxito');
+                this.appGlobals.alertSuccess('Sub items Guardado con éxito');
                 Object.assign(this.cropItemRes, res);
+                this.gallery.idCropItems = this.cropItemRes.id;
               },
               error => {
                 this.appGlobals.alertError(error.error);

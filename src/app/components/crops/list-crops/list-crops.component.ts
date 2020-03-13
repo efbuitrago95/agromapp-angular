@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Crops} from '../../../models/crops';
 import {Languages} from '../../../models/languages';
 import {CropsService} from '../../../services/crops.service';

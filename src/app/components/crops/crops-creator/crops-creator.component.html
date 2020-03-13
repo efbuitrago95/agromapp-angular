@@ -1,105 +1,110 @@
 <div class="container my-3">
-    <div class="col-md-12 m-auto">
-      <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
-        <h4 class="form-header text-center bg-warning">Crear Cultivo</h4>
-        <div class="form-group text-left">
-          <h5 class="text-dark">Información</h5>
-          <hr>
+  <div class="col-md-12 m-auto">
+    <form ngNativeValidate (submit)="onSubmit()" role="form" class="form-width">
+      <h4 class="form-header text-center bg-warning">Crear Cultivo</h4>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Información</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="from-group col-md-12">
+          <app-multi-selector
+            (changeSelect)="changeLanguage($event)"
+            *ngIf="languages.length > 0"
+            [listItems]="languages"
+            [placeholder]="'Seleccionar idioma'"
+            [single]='"true"'
+            [listItemsSelected]="selectLanguage">
+          </app-multi-selector>
         </div>
-        <div class="row">
-          <div class="from-group col-md-12">
-            <app-multi-selector
-              (changeSelect)="changeLanguage($event)"
-              *ngIf="languages.length > 0"
-              [listItems]="languages"
-              [placeholder]="'Seleccionar idioma'"
-              [single]='"true"'
-              [listItemsSelected]="selectLanguage">
-            </app-multi-selector>
-          </div>
+      </div>
+      <div class="row mt-2">
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.scientificName" name="scientificName" [disabled]="cropRes.id" type="text"
+                 class="form-control" placeholder="Nombre científico">
         </div>
-        <div class="row mt-2">
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.scientificName" name="scientificName" [disabled]="cropRes.id" type="text" class="form-control" placeholder="Nombre científico">
-          </div>
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.otherScientificNames" name="otherScientificNames" type="text" class="form-control" placeholder="Otro nombre científico">
-          </div>
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.otherScientificNames" name="otherScientificNames" type="text" class="form-control"
+                 placeholder="Otro nombre científico">
         </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.commonName" name="commonName" type="text" class="form-control" placeholder="Nombre común">
-          </div>
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.otherCommonNames" name="otherCommonNames" type="text" class="form-control" placeholder="Otro nombre común">
-          </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.commonName" name="commonName" type="text" class="form-control"
+                 placeholder="Nombre común">
         </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.authors" name="authors" type="text" class="form-control" placeholder="Autores">
-          </div>
-          <div class="form-group col-md-6">
-            <input [(ngModel)]="crop.taxonomicFamily" name="taxonomicFamily" type="text" class="form-control" placeholder="Familia Taxonomíca">
-          </div>
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.otherCommonNames" name="otherCommonNames" type="text" class="form-control"
+                 placeholder="Otro nombre común">
         </div>
-        <div class="row">
-          <div class="from-group col-md-12 mb-3">
-            <app-multi-selector
-              (changeSelect)="changeClassifications($event)"
-              *ngIf="classifications.length > 0"
-              [listItems]="classifications"
-              [placeholder]="'Seleccionar la clasificación'"
-              [single]= '"true"'
-              [listItemsSelected]="selectedClassification">
-            </app-multi-selector>
-          </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.authors" name="authors" type="text" class="form-control" placeholder="Autores">
         </div>
-        <div class="form-group text-left">
-          <h5 class="text-dark">Subir imagen del cultivo</h5>
-          <hr>
+        <div class="form-group col-md-6">
+          <input [(ngModel)]="crop.taxonomicFamily" name="taxonomicFamily" type="text" class="form-control"
+                 placeholder="Familia Taxonomíca">
         </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <app-upload-file (changeImage)="changeImage($event)"></app-upload-file>
-          </div>
+      </div>
+      <div class="row">
+        <div class="from-group col-md-12 mb-3">
+          <app-multi-selector
+            (changeSelect)="changeClassifications($event)"
+            *ngIf="classifications.length > 0"
+            [listItems]="classifications"
+            [placeholder]="'Seleccionar la clasificación'"
+            [single]='"true"'
+            [listItemsSelected]="selectedClassification">
+          </app-multi-selector>
         </div>
-        <div class="form-group text-left">
-          <h5 class="text-dark">Subir audio sobre el cultivo</h5>
-          <hr>
+      </div>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Subir imagen del cultivo</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <app-upload-file (changeImage)="changeImage($event)"></app-upload-file>
         </div>
-        <div class="row">
-          <div class="form-group col-md-12 ">
-            <input [(ngModel)]="crop.record" name="record" type="text" >
-          </div>
+      </div>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Subir audio sobre el cultivo</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12 ">
+          <input [(ngModel)]="crop.record" name="record" type="text">
         </div>
-        <div class="form-group text-left">
-          <h5 class="text-dark">Subir el Link del video sobre el cultivo</h5>
-          <hr>
+      </div>
+      <div class="form-group text-left">
+        <h5 class="text-dark">Subir el Link del video sobre el cultivo</h5>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input [(ngModel)]="crop.video" name="video" type="text" class="form-control" placeholder="link del cultivo">
         </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <input [(ngModel)]="crop.video" name="video" type="text" class="form-control" placeholder="link del cultivo">
-          </div>
+      </div>
+      <div class="row">
+        <div class="from-group col-md-12">
+          <app-multi-selector
+            (changeSelect)="changeProperties($event)"
+            *ngIf="properties.length > 0"
+            [listItems]="properties"
+            [placeholder]="'Seleccionar propiedad'"
+            [single]='false'
+            [listItemsSelected]="selectProperty">
+          </app-multi-selector>
         </div>
-        <div class="row">
-          <div class="from-group col-md-12">
-            <app-multi-selector
-              (changeSelect)="changeProperties($event)"
-              *ngIf="properties.length > 0"
-              [listItems]="properties"
-              [placeholder]="'Seleccionar propiedad'"
-              [single]='false'
-              [listItemsSelected]="selectProperty">
-            </app-multi-selector>
-          </div>
-        </div>
-        <div class="form-group text-center mt-2 mb-4">
-          <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
-        </div>
-        <!--*ngIf="cropRes.id !== undefined"-->
-        <ng-container>
-          <app-properties-accordion [propertyLanguage]="property" *ngFor="let property of propertiesAccordion"></app-properties-accordion>
-        </ng-container>
-      </form>
-    </div>
+      </div>
+      <div class="form-group text-center mt-2 mb-4">
+        <button class="btn btn-outline-warning col-md-4" type="submit">Crear</button>
+      </div>
+    </form>
+      <ng-container *ngIf="cropRes.id !== undefined">
+        <app-properties-accordion [propertyLanguage]="property"
+                                *ngFor="let property of propertiesAccordion"></app-properties-accordion>
+      </ng-container>
+  </div>
 </div>
