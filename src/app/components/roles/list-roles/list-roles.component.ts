@@ -10,6 +10,7 @@ import {AppGlobals} from '../../../app-globals';
   styleUrls: ['./list-roles.component.css']
 })
 export class ListRolesComponent implements OnInit {
+
   roles: Roles[] = [];
   params: any = {};
   paginationData: any = {};

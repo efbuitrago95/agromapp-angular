@@ -103,7 +103,7 @@
       </div>
     </form>
       <ng-container *ngIf="cropRes.id !== undefined">
-        <app-properties-accordion [propertyLanguage]="property"
+        <app-properties-accordion [propertyLanguage]="property" [cropsProperty]="cropRes"
                                 *ngFor="let property of propertiesAccordion"></app-properties-accordion>
       </ng-container>
   </div>

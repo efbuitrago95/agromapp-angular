@@ -5,6 +5,7 @@ import {Properties} from '../../../models/properties';
 import {PropertiesItems} from '../../../models/propertiesItems';
 import {PropertiesService} from '../../../services/properties.service';
 import {PropertiesitemsService} from '../../../services/propertiesitems.service';
+import {Crops} from '../../../models/crops';
 
 @Component({
   selector: 'app-properties-accordion',
@@ -13,6 +14,7 @@ import {PropertiesitemsService} from '../../../services/propertiesitems.service'
 })
 export class PropertiesAccordionComponent implements OnInit {
   @Input() propertyLanguage: Properties = new Properties();
+  @Input() cropsProperty: Crops = new Crops();
   params: any = {};
   property: Properties[] = [];
   propertiesitemsobject: PropertiesItems = new PropertiesItems();
@@ -29,6 +31,7 @@ export class PropertiesAccordionComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Llega a propiedades', this.cropsProperty)
     this.getpropertiesItems();
   }
 

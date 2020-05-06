@@ -23,11 +23,11 @@ export class CropItemsService {
       paramsUrl = this.appGlobals.paramsConvert(params);
     }
 
-    return this.http.get(this.apiUrl + 'crops' + paramsUrl);
+    return this.http.get(this.apiUrl + 'crop_items' + paramsUrl);
   }
 
   create(cropsItems: CropsItems) {
-    return this.http.post(this.apiUrl + 'crops', JSON.stringify(cropsItems), {
+    return this.http.post(this.apiUrl + 'crop_items', JSON.stringify(cropsItems), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -35,7 +35,7 @@ export class CropItemsService {
   }
 
   update(cropsItems: CropsItems) {
-    return this.http.put(this.apiUrl + 'crops', JSON.stringify(cropsItems), {
+    return this.http.put(this.apiUrl + 'crop_items', JSON.stringify(cropsItems), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

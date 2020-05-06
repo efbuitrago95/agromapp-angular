@@ -22,7 +22,8 @@
           </div>
         </div>
         <div class="mt-2">
-          <app-items-accordion [propertyItems]="item" *ngFor="let item of propertiesitemsselected"
+          <app-items-accordion [propertyItems]="item" [cropsItems]="cropsProperty"
+                               *ngFor="let item of propertiesitemsselected"
                                class="mt-2"></app-items-accordion>
         </div>
 

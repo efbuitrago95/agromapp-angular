@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AppGlobals} from '../../../app-globals';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
+import {Crops} from '../../../models/crops';
 
 @Component({
   selector: 'app-items-accordion',
@@ -17,6 +18,7 @@ import * as firebase from 'firebase';
 })
 export class ItemsAccordionComponent implements OnInit {
   @Input() propertyItems: PropertiesItems;
+  @Input() cropsItems: Crops = new Crops();
   cropItem: CropsItems = new CropsItems();
   cropItemRes: CropsItems = new CropsItems();
   gallery: Gallery = new Gallery();
@@ -29,6 +31,7 @@ export class ItemsAccordionComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    console.log('Este es el resultado de cropItem', this.cropsItems);
   }
 
   async onSubmit() {
@@ -39,6 +42,8 @@ export class ItemsAccordionComponent implements OnInit {
         ref.putString(this.image, 'data_url').then(() => {
           ref.getDownloadURL().then((url) => {
             this.gallery.photo = url;
+            this.cropItem.idCrop = this.cropsItems.id;
+            this.cropItem.idItem = this.propertyItems.id;
             this.cropItemsService.create(this.cropItem).subscribe(
               res => {
                 this.appGlobals.alertSuccess('Sub items Guardado con éxito');
