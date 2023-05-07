@@ -27,7 +27,7 @@
     "chart.js": "^2.9.1",
     "firebase": "^7.6.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-multiselect-dropdown": "^0.2.10",
     "ng-sidebar": "^9.1.1",
     "ngx-awesome-uploader": "^8.1.1",
